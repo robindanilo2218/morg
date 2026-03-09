@@ -105,9 +105,10 @@
                     <a href="#ahorro" class="hover:text-brand-green transition">Ahorro</a>
                     <a href="#contacto" class="hover:text-brand-green transition">Contacto</a>
                 </div>
-                <button onclick="window.print()" class="bg-brand-green hover:bg-green-600 px-4 py-2 rounded text-white font-semibold transition flex items-center shadow">
-                    <i class="fas fa-print mr-2"></i> Imprimir PDF
-                </button>
+                <!-- Botón actualizado para redirigir a la carpeta /pdf/ -->
+                <a href="/pdf/" target="_blank" class="bg-brand-green hover:bg-green-600 px-4 py-2 rounded text-white font-semibold transition flex items-center shadow">
+                    <i class="fas fa-file-pdf mr-2"></i> Ver PDF
+                </a>
             </div>
         </div>
     </nav>
@@ -315,6 +316,20 @@
             </div>
         </div>
     </section>
+
+    <!-- Botón flotante de WhatsApp (Visible en toda la navegación) -->
+    <div class="fixed bottom-6 right-6 z-50 no-print flex flex-col items-end group">
+        <!-- Burbuja de mensaje (Tooltip) -->
+        <div class="bg-white text-gray-800 text-sm py-1 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mb-2 font-semibold border border-gray-100">
+            ¡Escríbenos!
+        </div>
+        <!-- Botón circular con animación de pulso -->
+        <a href="https://wa.me/50252927466" target="_blank" rel="noopener noreferrer" class="relative bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform duration-300">
+            <i class="fab fa-whatsapp text-4xl relative z-10"></i>
+            <!-- Efecto visual de onda -->
+            <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-40"></span>
+        </a>
+    </div>
 
 </body>
 </html>
