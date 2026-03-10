@@ -9,18 +9,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome para iconos -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Configuración de colores personalizados (Verde corporativo y Azul oscuro) -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            green: '#10b981', // Verde esmeralda para "Green Link"
-                            dark: '#1f2937',  // Gris oscuro casi azul
-                            light: '#f3f4f6'
+                            navy: '#001b60',
+                            blue: '#005cb3',
+                            light: '#efefef',
+                            bg: '#f5f5f5'
                         }
+                    },
+                    fontFamily: {
+                        montserrat: ['Montserrat', 'sans-serif'],
                     }
                 }
             }
@@ -28,27 +33,73 @@
     </script>
 
     <style>
-        /* Desplazamiento suave web */
         html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; }
 
-        /* ==========================================
-           MAGIA DE IMPRESIÓN (CONVERSIÓN A PDF)
-           ========================================== */
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .animate-fade-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-fade-left { animation: fadeInLeft 0.8s ease-out forwards; }
+        .animate-fade-right { animation: fadeInRight 0.8s ease-out forwards; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+
+        /* Overlay para portada */
+        .cover-overlay {
+            background: linear-gradient(135deg, rgba(0,27,96,0.92) 0%, rgba(0,92,179,0.85) 100%);
+        }
+
+        /* Número decorativo */
+        .number-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        /* Card hover effect */
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,27,96,0.15);
+        }
+        .service-card {
+            transition: all 0.3s ease;
+        }
+
+        /* Decorative box images */
+        .deco-box {
+            position: absolute;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        /* Print styles */
         @media print {
-            @page {
-                size: A4 landscape; /* Formato presentación horizontal */
-                margin: 0; 
-            }
-            body {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                background-color: white;
-            }
-            
-            /* Ocultar elementos web al imprimir */
+            @page { size: A4 landscape; margin: 0; }
+            body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
             .no-print { display: none !important; }
-
-            /* Cada sección es una diapositiva */
             .slide-section {
                 page-break-after: always;
                 page-break-inside: avoid;
@@ -61,272 +112,388 @@
                 padding: 40px !important;
                 margin: 0 !important;
                 box-sizing: border-box;
-                background: white !important;
             }
-
-            /* Forzar estilos de texto para impresión */
-            h1 { font-size: 32pt !important; text-align: center; }
-            h2 { font-size: 28pt !important; text-align: center; margin-bottom: 20px !important;}
-            p, li, span { font-size: 16pt !important; }
-            
-            /* Ajustar cuadrículas para que quepan en la hoja */
-            .print-grid {
-                display: flex !important;
-                flex-wrap: wrap !important;
-                justify-content: center !important;
-                gap: 15px !important;
-                width: 100% !important;
-            }
-            .print-item {
-                width: 45% !important; /* Dos columnas al imprimir */
-                margin-bottom: 10px !important;
-            }
-            .print-item-3 {
-                width: 30% !important; /* Tres columnas al imprimir */
-            }
-            .bg-brand-dark { background-color: #1f2937 !important; color: white !important; }
-            .bg-brand-green { background-color: #10b981 !important; color: white !important; }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+<body class="bg-brand-bg text-gray-800 font-montserrat antialiased">
 
-    <!-- Navbar flotante (Oculto en PDF) -->
-    <nav class="no-print bg-brand-dark text-white sticky top-0 z-50 shadow-md">
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="no-print bg-brand-navy text-white sticky top-0 z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-                <div class="font-bold text-xl flex items-center gap-2">
-                    <i class="fas fa-ship text-brand-green"></i> Morg & Green Link
+                <a href="#inicio" class="flex items-center gap-3">
+                    <img src="media/img379.jpg" alt="Morg Logo" class="h-10 w-auto rounded">
+                    <span class="font-bold text-lg tracking-wide">Morg & Green Link</span>
+                </a>
+                <div class="hidden md:flex space-x-6 text-sm font-medium">
+                    <a href="#inicio" class="hover:text-brand-blue transition-colors duration-200">Inicio</a>
+                    <a href="#quienes-somos" class="hover:text-brand-blue transition-colors duration-200">Nosotros</a>
+                    <a href="#servicios" class="hover:text-brand-blue transition-colors duration-200">Servicios</a>
+                    <a href="#ahorro" class="hover:text-brand-blue transition-colors duration-200">Ahorro</a>
+                    <a href="#transparencia" class="hover:text-brand-blue transition-colors duration-200">Transparencia</a>
+                    <a href="#contacto" class="hover:text-brand-blue transition-colors duration-200">Contacto</a>
                 </div>
-                <div class="hidden md:flex space-x-6">
-                    <a href="#inicio" class="hover:text-brand-green transition">Inicio</a>
-                    <a href="#quienes-somos" class="hover:text-brand-green transition">Nosotros</a>
-                    <a href="#servicios" class="hover:text-brand-green transition">Servicios</a>
-                    <a href="#ahorro" class="hover:text-brand-green transition">Ahorro</a>
-                    <a href="#contacto" class="hover:text-brand-green transition">Contacto</a>
-                </div>
-                <!-- Botón actualizado para redirigir a la carpeta /pdf/ -->
-                <a href="/pdf/" target="_blank" class="bg-brand-green hover:bg-green-600 px-4 py-2 rounded text-white font-semibold transition flex items-center shadow">
+                <a href="/pdf/" target="_blank" class="bg-brand-blue hover:bg-blue-700 px-4 py-2 rounded-lg text-white text-sm font-semibold transition flex items-center shadow-md">
                     <i class="fas fa-file-pdf mr-2"></i> Ver PDF
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- PÁGINA 1: Portada -->
-    <section id="inicio" class="slide-section relative bg-brand-dark text-white py-20 min-h-screen flex items-center">
-        <!-- Elemento decorativo web -->
-        <div class="absolute inset-0 opacity-10 no-print" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-        
-        <div class="max-w-5xl mx-auto px-4 w-full relative z-10 text-center">
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4">
-                <span class="text-white">Morg</span> <br class="no-print hidden md:block">
-                <span class="text-brand-green text-3xl md:text-5xl block mt-2">Asesoría Logística</span>
-            </h1>
-            
-            <div class="w-24 h-2 bg-brand-green mx-auto my-8 rounded-full"></div>
-            
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-300 mb-12">
-                GREEN LINK <span class="text-brand-green font-light">SOLUTIONS TRADING</span>
-            </h2>
+    <!-- ==================== PÁGINA 1: PORTADA ==================== -->
+    <section id="inicio" class="slide-section relative min-h-screen flex items-center overflow-hidden">
+        <!-- Imagen de fondo (img435) -->
+        <div class="absolute inset-0">
+            <img src="media/img435.jpg" alt="Fondo portada" class="w-full h-full object-cover">
+        </div>
+        <!-- Overlay azul -->
+        <div class="absolute inset-0 cover-overlay"></div>
 
-            <div class="print-grid flex flex-wrap justify-center gap-8 mt-12 text-left bg-gray-800 bg-opacity-50 p-8 rounded-2xl backdrop-blur-sm border border-gray-700">
-                <div class="print-item-3">
-                    <p class="font-bold text-brand-green text-xl mb-2">Lcda. Mavis Ramos</p>
-                    <p><i class="fab fa-whatsapp mr-2 text-green-400"></i> 5292-7466</p>
-                    <p class="text-sm mt-1"><i class="fas fa-envelope mr-2"></i> mavis_oramos@hotmail.com</p>
+        <!-- Cajas decorativas -->
+        <img src="media/img429.jpg" alt="" class="deco-box left-0 top-20 w-48 opacity-10 hidden lg:block">
+        <img src="media/img386.jpg" alt="" class="deco-box right-0 bottom-20 w-44 opacity-10 hidden lg:block">
+        
+        <div class="max-w-6xl mx-auto px-6 w-full relative z-10 flex flex-col lg:flex-row items-center gap-12 py-16">
+            <!-- Contenido izquierdo -->
+            <div class="flex-1 text-center lg:text-left text-white">
+                <!-- Logo grande -->
+                <div class="mb-8 animate-fade-up">
+                    <img src="media/img575.jpg" alt="Morg Green Link Logo" class="h-28 md:h-36 w-auto mx-auto lg:mx-0 rounded-xl shadow-2xl">
                 </div>
-                <div class="print-item-3 border-t md:border-t-0 md:border-l border-gray-600 pt-4 md:pt-0 md:pl-8">
-                    <p class="font-bold text-brand-green text-xl mb-2">David López</p>
-                    <p><i class="fas fa-phone mr-2 text-blue-400"></i> 4291-1813</p>
-                    <p class="text-sm mt-1"><i class="fas fa-envelope mr-2"></i> operaciones.morg@gmail.com</p>
+                
+                <p class="text-2xl md:text-3xl font-light text-blue-200 mb-2 animate-fade-up delay-200">
+                    Asesoría Logística
+                </p>
+                
+                <div class="w-20 h-1 bg-brand-blue mx-auto lg:mx-0 my-6 rounded-full animate-fade-up delay-200"></div>
+                
+                <h2 class="text-xl md:text-2xl font-bold text-white mb-8 animate-fade-up delay-300">
+                    GREEN LINK <span class="font-light text-blue-300">SOLUTIONS TRADING</span>
+                </h2>
+
+                <!-- Info de contacto -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 animate-fade-up delay-400">
+                    <div class="bg-white bg-opacity-35 backdrop-blur-sm p-4 rounded-xl border border-white border-opacity-20">
+                        <p class="font-bold text-brand-blue text-lg">Lcda. Mavis Ramos</p>
+                        <p class="text-sm mt-1"><a href="https://wa.me/50252927466" target="_blank" class="hover:text-green-300 transition"><i class="fab fa-whatsapp mr-1 text-green-400"></i> 5292-7466</a></p>
+                        <p class="text-sm mt-1"><a href="tel:+50252927466" class="hover:text-blue-300 transition"><i class="fas fa-phone mr-1 text-blue-300"></i> 5292-7466</a></p>
+                        <p class="text-xs mt-1 text-blue-200"><a href="mailto:mavis_oramos@hotmail.com" class="hover:text-white transition"><i class="fas fa-envelope mr-1"></i> mavis_oramos@hotmail.com</a></p>
+                    </div>
+                    <div class="bg-white bg-opacity-35 backdrop-blur-sm p-4 rounded-xl border border-white border-opacity-20">
+                        <p class="font-bold text-brand-blue text-lg">David López</p>
+                        <p class="text-sm mt-1"><a href="tel:+50242911813" class="hover:text-blue-300 transition"><i class="fas fa-phone mr-1 text-blue-300"></i> 4291-1813</a></p>
+                        <p class="text-xs mt-1 text-blue-200"><a href="mailto:operaciones.morg@gmail.com" class="hover:text-white transition"><i class="fas fa-envelope mr-1"></i> operaciones.morg@gmail.com</a></p>
+                    </div>
+                    <div class="bg-white bg-opacity-35 backdrop-blur-sm p-4 rounded-xl border border-white border-opacity-20">
+                        <p class="font-bold text-yellow-400 text-lg">Ava Tsang</p>
+                        <p class="text-sm mt-1"><a href="tel:+8613113949943" class="hover:text-yellow-200 transition"><i class="fas fa-phone mr-1 text-yellow-300"></i> +86 13113949943</a></p>
+                        <p class="text-xs mt-1 text-blue-200"><a href="mailto:43791756@qq.com" class="hover:text-white transition"><i class="fas fa-envelope mr-1"></i> 43791756@qq.com</a></p>
+                    </div>
                 </div>
-                <div class="print-item-3 border-t md:border-t-0 md:border-l border-gray-600 pt-4 md:pt-0 md:pl-8">
-                    <p class="font-bold text-brand-green text-xl mb-2">Ava Tsang</p>
-                    <p><i class="fas fa-globe-asia mr-2 text-yellow-400"></i> +86 13113949943</p>
-                    <p class="text-sm mt-1"><i class="fas fa-envelope mr-2"></i> 43791756@qq.com</p>
-                </div>
+            </div>
+
+            <!-- Imagen superpuesta derecha (img547) -->
+            <div class="flex-shrink-0 hidden lg:block animate-fade-right delay-300">
+                <img src="media/img547.jpg" alt="Morg Presentación" class="w-80 xl:w-96 rounded-2xl shadow-2xl border-4 border-white border-opacity-20">
             </div>
         </div>
     </section>
 
-    <!-- PÁGINA 2: ¿Quiénes Somos? -->
-    <section id="quienes-somos" class="slide-section py-20 bg-white min-h-screen flex flex-col justify-center">
-        <div class="max-w-6xl mx-auto px-4 w-full">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-extrabold text-brand-dark uppercase tracking-wide">¿Quiénes Somos?</h2>
-                <div class="w-16 h-1 bg-brand-green mx-auto mt-4"></div>
+    <!-- ==================== PÁGINA 2: ¿QUIÉNES SOMOS? ==================== -->
+    <section id="quienes-somos" class="slide-section py-20 bg-white min-h-screen flex flex-col justify-center relative overflow-hidden">
+        <!-- Caja decorativa -->
+        <img src="media/img386.jpg" alt="" class="deco-box right-0 top-10 w-40 hidden lg:block">
+
+        <div class="max-w-6xl mx-auto px-6 w-full relative z-10">
+            <!-- Título -->
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">¿Quiénes Somos?</h2>
+                <div class="w-20 h-1 bg-brand-blue mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <p class="text-2xl text-center text-gray-700 max-w-4xl mx-auto mb-16 leading-relaxed">
-                Somos una empresa dedicada a brindar asesoría logística y aduanal a importadores.
-            </p>
-
-            <div class="print-grid grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-                <div class="print-item-3 text-center p-6 bg-brand-light rounded-xl shadow-sm border border-gray-100">
-                    <i class="fas fa-globe text-4xl text-brand-green mb-4"></i>
-                    <h3 class="font-bold text-xl text-brand-dark">Comercio Exterior</h3>
+            <!-- Barco + Descripción -->
+            <div class="flex flex-col lg:flex-row items-center gap-10 mb-16">
+                <div class="lg:w-1/2">
+                    <img src="media/img123.jpg" alt="Barco de carga" class="w-full rounded-2xl shadow-xl">
                 </div>
-                <div class="print-item-3 text-center p-6 bg-brand-light rounded-xl shadow-sm border border-gray-100">
-                    <i class="fas fa-chart-line text-4xl text-brand-green mb-4"></i>
-                    <h3 class="font-bold text-xl text-brand-dark">Optimización de Costos</h3>
-                </div>
-                <div class="print-item-3 text-center p-6 bg-brand-light rounded-xl shadow-sm border border-gray-100">
-                    <i class="fas fa-file-contract text-4xl text-brand-green mb-4"></i>
-                    <h3 class="font-bold text-xl text-brand-dark">Verificación Documental</h3>
-                </div>
-                <div class="print-item-3 text-center p-6 bg-brand-light rounded-xl shadow-sm border border-gray-100">
-                    <i class="fas fa-shield-alt text-4xl text-brand-green mb-4"></i>
-                    <h3 class="font-bold text-xl text-brand-dark">Reducir Riesgos</h3>
+                <div class="lg:w-1/2">
+                    <p class="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
+                        Somos una empresa dedicada a brindar <strong class="text-brand-navy">asesoría logística y aduanal</strong> a importadores.
+                    </p>
+                    
+                    <!-- Áreas de expertise -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-5 bg-brand-light rounded-xl border-l-4 border-brand-navy">
+                            <i class="fas fa-globe text-3xl text-brand-blue mb-3"></i>
+                            <h3 class="font-bold text-brand-navy">Comercio Exterior</h3>
+                        </div>
+                        <div class="text-center p-5 bg-brand-light rounded-xl border-l-4 border-brand-navy">
+                            <i class="fas fa-chart-line text-3xl text-brand-blue mb-3"></i>
+                            <h3 class="font-bold text-brand-navy">Optimización de Costos</h3>
+                        </div>
+                        <div class="text-center p-5 bg-brand-light rounded-xl border-l-4 border-brand-navy">
+                            <i class="fas fa-file-contract text-3xl text-brand-blue mb-3"></i>
+                            <h3 class="font-bold text-brand-navy">Verificación Documental</h3>
+                        </div>
+                        <div class="text-center p-5 bg-brand-light rounded-xl border-l-4 border-brand-navy">
+                            <i class="fas fa-shield-alt text-3xl text-brand-blue mb-3"></i>
+                            <h3 class="font-bold text-brand-navy">Reducir Riesgos</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="bg-brand-dark text-white p-8 rounded-2xl text-center shadow-lg">
-                <h3 class="text-2xl font-bold mb-4 text-brand-green uppercase">Nuestra Misión</h3>
+            <!-- Misión -->
+            <div class="bg-brand-navy text-white p-8 md:p-10 rounded-2xl text-center shadow-xl">
+                <h3 class="text-xl font-bold mb-3 text-brand-blue uppercase tracking-wider">Nuestra Misión</h3>
                 <p class="text-xl md:text-3xl font-light">
-                    Simplificar tus procesos logísticos y <strong class="font-bold">maximizar tus ganancias.</strong>
+                    Simplificar tus procesos logísticos y <strong class="font-bold text-blue-300">maximizar tus ganancias.</strong>
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- PÁGINA 3: Servicios -->
-    <section id="servicios" class="slide-section py-20 bg-brand-light min-h-screen flex flex-col justify-center">
-        <div class="max-w-7xl mx-auto px-4 w-full">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-extrabold text-brand-dark uppercase tracking-wide">Nuestros Servicios</h2>
-                <div class="w-16 h-1 bg-brand-green mx-auto mt-4"></div>
-            </div>
+    <!-- ==================== PÁGINA 3: NUESTROS SERVICIOS ==================== -->
+    <section id="servicios" class="slide-section py-20 bg-brand-light min-h-screen flex flex-col justify-center relative overflow-hidden">
+        <!-- Caja decorativa -->
+        <img src="media/img429.jpg" alt="" class="deco-box right-0 bottom-10 w-36 hidden lg:block">
 
-            <div class="print-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <div class="print-item bg-white p-6 rounded-xl shadow border-l-4 border-brand-green flex items-start">
-                    <i class="fas fa-box-open text-2xl text-brand-dark mr-4 mt-1"></i>
-                    <p class="text-lg text-gray-800 font-medium">Servicio de cadena de suministro desde China.</p>
-                </div>
-
-                <div class="print-item bg-white p-6 rounded-xl shadow border-l-4 border-brand-green flex items-start">
-                    <i class="fas fa-search-location text-2xl text-brand-dark mr-4 mt-1"></i>
-                    <p class="text-lg text-gray-800 font-medium">Inspección y verificación de fábricas en China.</p>
-                </div>
-
-                <div class="print-item bg-white p-6 rounded-xl shadow border-l-4 border-brand-green flex items-start">
-                    <i class="fas fa-route text-2xl text-brand-dark mr-4 mt-1"></i>
-                    <p class="text-lg text-gray-800 font-medium">Asesoría logística internacional (evaluación de rutas, tiempos y costos).</p>
-                </div>
-
-                <div class="print-item bg-white p-6 rounded-xl shadow border-l-4 border-brand-green flex items-start">
-                    <i class="fas fa-file-signature text-2xl text-brand-dark mr-4 mt-1"></i>
-                    <p class="text-lg text-gray-800 font-medium">Gestión de trámites aduanales (DUCA, clasificación arancelaria, etc.).</p>
-                </div>
-
-                <div class="print-item bg-white p-6 rounded-xl shadow border-l-4 border-brand-green flex items-start">
-                    <i class="fas fa-balance-scale text-2xl text-brand-dark mr-4 mt-1"></i>
-                    <p class="text-lg text-gray-800 font-medium">Asesoría aduanal especializada (cumplimiento normativo y prevención de sanciones).</p>
-                </div>
-
-                <div class="print-item bg-white p-6 rounded-xl shadow border-l-4 border-brand-green flex items-start">
-                    <i class="fas fa-users text-2xl text-brand-dark mr-4 mt-1"></i>
-                    <p class="text-lg text-gray-800 font-medium">Atención personalizada durante todo el proceso de importación.</p>
-                </div>
-
-                <div class="print-item bg-white p-6 rounded-xl shadow border-l-4 border-brand-green flex items-start md:col-span-2 lg:col-span-3 lg:w-1/3 lg:mx-auto">
-                    <i class="fas fa-shield-virus text-2xl text-brand-dark mr-4 mt-1"></i>
-                    <p class="text-lg text-gray-800 font-medium">Seguro de mercancía.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- PÁGINA 4: Ahorro en Costos -->
-    <section id="ahorro" class="slide-section py-20 bg-white min-h-screen flex flex-col justify-center border-t border-gray-200">
-        <div class="max-w-5xl mx-auto px-4 w-full">
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-extrabold text-brand-dark uppercase tracking-wide">Ahorro en Costos Logísticos</h2>
-                <div class="w-16 h-1 bg-brand-green mx-auto mt-4"></div>
-                <p class="text-xl text-gray-600 mt-6">Diseñamos estrategias personalizadas para reducir sus costos.</p>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">Nuestros Servicios</h2>
+                <div class="w-20 h-1 bg-brand-blue mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <div class="bg-brand-dark text-white rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-                <!-- Icono de fondo decorativo -->
-                <i class="fas fa-piggy-bank absolute -bottom-10 -right-10 text-9xl opacity-10 text-brand-green"></i>
-                
-                <ul class="space-y-6 text-lg md:text-xl relative z-10 print-grid">
-                    <li class="flex items-start print-item">
-                        <i class="fas fa-check-circle text-brand-green mt-1 mr-4 text-2xl"></i>
-                        <span>Optimización de rutas comerciales.</span>
-                    </li>
-                    <li class="flex items-start print-item">
-                        <i class="fas fa-check-circle text-brand-green mt-1 mr-4 text-2xl"></i>
-                        <span>Negociación de tarifas con agentes de carga y navieras.</span>
-                    </li>
-                    <li class="flex items-start print-item">
-                        <i class="fas fa-check-circle text-brand-green mt-1 mr-4 text-2xl"></i>
-                        <span>Identificación de beneficios arancelarios aplicables.</span>
-                    </li>
-                    <li class="flex items-start print-item">
-                        <i class="fas fa-check-circle text-brand-green mt-1 mr-4 text-2xl"></i>
-                        <span>Reducción de demoras en puerto y costos por almacenamiento.</span>
-                    </li>
-                </ul>
+            <div class="flex flex-col lg:flex-row gap-10 items-stretch">
+                <!-- Imagen lateral izquierda (img388 - contenedores) -->
+                <div class="hidden lg:block lg:w-1/4 flex-shrink-0">
+                    <img src="media/img388.jpg" alt="Contenedores" class="w-full h-full object-cover rounded-2xl shadow-xl">
+                </div>
 
-                <div class="mt-10 p-6 bg-brand-green bg-opacity-20 border border-brand-green rounded-xl">
-                    <p class="text-center font-bold text-xl md:text-2xl text-brand-green">
-                        Nuestros clientes logran ahorros significativos en costos de fletes marítimos, terrestres y aéreos.
-                    </p>
+                <!-- Grid de servicios -->
+                <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="service-card bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue flex items-start">
+                        <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-box-open text-white"></i>
+                        </div>
+                        <p class="text-gray-800 font-medium">Servicio de cadena de suministro desde China.</p>
+                    </div>
+
+                    <div class="service-card bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue flex items-start">
+                        <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-search-location text-white"></i>
+                        </div>
+                        <p class="text-gray-800 font-medium">Inspección y verificación de fábricas en China.</p>
+                    </div>
+
+                    <div class="service-card bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue flex items-start">
+                        <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-route text-white"></i>
+                        </div>
+                        <p class="text-gray-800 font-medium">Asesoría logística internacional (evaluación de rutas, tiempos y costos).</p>
+                    </div>
+
+                    <div class="service-card bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue flex items-start">
+                        <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-file-signature text-white"></i>
+                        </div>
+                        <p class="text-gray-800 font-medium">Gestión de trámites aduanales (DUCA, clasificación arancelaria, etc.).</p>
+                    </div>
+
+                    <div class="service-card bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue flex items-start">
+                        <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-balance-scale text-white"></i>
+                        </div>
+                        <p class="text-gray-800 font-medium">Asesoría aduanal especializada (cumplimiento normativo y prevención de sanciones).</p>
+                    </div>
+
+                    <div class="service-card bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue flex items-start">
+                        <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-users text-white"></i>
+                        </div>
+                        <p class="text-gray-800 font-medium">Atención personalizada durante todo el proceso de importación.</p>
+                    </div>
+
+                    <div class="service-card bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue flex items-start md:col-span-2 md:w-1/2 md:mx-auto">
+                        <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-shield-virus text-white"></i>
+                        </div>
+                        <p class="text-gray-800 font-medium">Seguro de mercancía.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER / PÁGINA 5: Cierre de Contacto -->
-    <section id="contacto" class="slide-section py-20 bg-brand-dark text-white min-h-screen flex flex-col justify-center">
-        <div class="max-w-4xl mx-auto px-4 w-full text-center">
-            <h2 class="text-5xl font-extrabold mb-8 text-brand-green">¡Ponte en contacto!</h2>
-            <p class="text-xl text-gray-300 mb-12">Estamos listos para optimizar su cadena de suministro.</p>
+    <!-- ==================== PÁGINA 4: AHORRO EN COSTOS ==================== -->
+    <section id="ahorro" class="slide-section py-20 bg-white min-h-screen flex flex-col justify-center relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 w-full relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">Ahorro en Costos Logísticos</h2>
+                <div class="w-20 h-1 bg-brand-blue mx-auto mt-4 rounded-full"></div>
+                <p class="text-xl text-gray-600 mt-6">Diseñamos estrategias personalizadas para reducir costos logísticos.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-10">
+                <!-- Contenedor colgado (img311) -->
+                <div class="lg:w-2/5 flex-shrink-0">
+                    <img src="media/img311.jpg" alt="Contenedor colgado" class="w-full rounded-2xl shadow-xl">
+                </div>
+
+                <!-- Lista de beneficios -->
+                <div class="lg:w-3/5">
+                    <div class="bg-brand-navy text-white rounded-2xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
+                        <i class="fas fa-piggy-bank absolute -bottom-8 -right-8 text-8xl opacity-10 text-brand-blue"></i>
+                        
+                        <ul class="space-y-5 text-lg relative z-10">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-brand-blue mt-1 mr-4 text-xl"></i>
+                                <span>Optimización de rutas comerciales.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-brand-blue mt-1 mr-4 text-xl"></i>
+                                <span>Negociación de tarifas con agentes de carga y navieras.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-brand-blue mt-1 mr-4 text-xl"></i>
+                                <span>Identificación de beneficios arancelarios aplicables.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-brand-blue mt-1 mr-4 text-xl"></i>
+                                <span>Reducción de demoras en puerto y costos por almacenamiento.</span>
+                            </li>
+                        </ul>
+
+                        <div class="mt-8 p-5 bg-brand-blue bg-opacity-20 border border-brand-blue rounded-xl">
+                            <p class="text-center font-bold text-lg md:text-xl text-blue-200">
+                                Nuestros clientes logran ahorros en costos de fletes marítimos, terrestres y aéreos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PÁGINA 5: TRANSPARENCIA Y HONESTIDAD ==================== -->
+    <section id="transparencia" class="slide-section py-20 bg-brand-light min-h-screen flex flex-col justify-center relative overflow-hidden">
+        <!-- Cajas decorativas -->
+        <img src="media/img429.jpg" alt="" class="deco-box left-0 top-20 w-40 hidden lg:block">
+
+        <div class="max-w-6xl mx-auto px-6 w-full relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">Transparencia y Honestidad</h2>
+                <div class="w-20 h-1 bg-brand-blue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-10">
+                <!-- Contenido -->
+                <div class="lg:w-3/5 order-2 lg:order-1">
+                    <div class="space-y-6">
+                        <!-- Punto 1 -->
+                        <div class="flex items-start gap-5 bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-navy">
+                            <div class="number-circle bg-brand-navy text-white">1</div>
+                            <div>
+                                <p class="text-lg md:text-xl text-gray-800 font-medium">
+                                    <strong class="text-brand-navy">No cobramos margen por flete.</strong>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Punto 2 -->
+                        <div class="flex items-start gap-5 bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue">
+                            <div class="number-circle bg-brand-blue text-white">2</div>
+                            <div>
+                                <p class="text-lg md:text-xl text-gray-800 font-medium">
+                                    <strong class="text-brand-navy">Nuestra asesoría no tiene conflicto de intereses.</strong>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Punto 3 -->
+                        <div class="flex items-start gap-5 bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-navy">
+                            <div class="number-circle bg-brand-navy text-white">3</div>
+                            <div>
+                                <p class="text-lg md:text-xl text-gray-800 font-medium">
+                                    <strong class="text-brand-navy">No somos una agencia de carga</strong>, lo que nos permite buscar siempre la mejor opción para tu empresa.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Imagen contenedor (img377) -->
+                <div class="lg:w-2/5 order-1 lg:order-2 flex-shrink-0">
+                    <img src="media/img377.jpg" alt="Contenedor" class="w-full max-h-[500px] object-cover rounded-2xl shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PÁGINA 6: CONTACTO ==================== -->
+    <section id="contacto" class="slide-section py-20 bg-brand-navy text-white min-h-screen flex flex-col justify-center relative overflow-hidden">
+        <!-- Decorativo -->
+        <img src="media/img386.jpg" alt="" class="deco-box left-0 bottom-10 w-36 opacity-5 hidden lg:block">
+
+        <div class="max-w-4xl mx-auto px-6 w-full text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-3 text-white">¡Ponte en contacto!</h2>
+            <div class="w-20 h-1 bg-brand-blue mx-auto mt-3 mb-8 rounded-full"></div>
+            <p class="text-xl text-blue-200 mb-12">Estamos listos para optimizar su cadena de suministro.</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-2xl mx-auto">
                 
-                <div class="bg-gray-800 p-8 rounded-xl border-t-4 border-brand-green hover:transform hover:-translate-y-1 transition duration-300">
-                    <h3 class="text-2xl font-bold text-white mb-4 border-b border-gray-600 pb-2">Guatemala / Latam</h3>
-                    <p class="text-lg font-semibold text-brand-green">Lcda. Mavis Ramos</p>
-                    <p class="text-gray-300 flex items-center mt-2"><i class="fab fa-whatsapp w-6"></i> 5292-7466</p>
-                    <p class="text-gray-300 flex items-center mt-1"><i class="fas fa-envelope w-6"></i> mavis_oramos@hotmail.com</p>
-                    
-                    <p class="text-lg font-semibold text-brand-green mt-6">David López</p>
-                    <p class="text-gray-300 flex items-center mt-2"><i class="fas fa-phone w-6"></i> 4291-1813</p>
-                    <p class="text-gray-300 flex items-center mt-1"><i class="fas fa-envelope w-6"></i> operaciones.morg@gmail.com</p>
+                <!-- Guatemala / Latam -->
+                <div class="bg-white bg-opacity-15 backdrop-blur-sm p-8 rounded-xl border border-white border-opacity-20 hover:bg-opacity-15 transition duration-300">
+                    <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-400 border-opacity-30 pb-3">
+                        <i class="fas fa-globe-americas text-brand-blue mr-2"></i> Guatemala / Latam
+                    </h3>
+                    <div class="mb-5">
+                        <p class="text-lg font-semibold text-brand-blue">Lcda. Mavis Ramos</p>
+                        <p class="text-blue-200 flex items-center mt-2"><a href="https://wa.me/50252927466" target="_blank" class="flex items-center hover:text-green-300 transition"><i class="fab fa-whatsapp w-6 text-green-400"></i> 5292-7466</a></p>
+                        <p class="text-blue-200 flex items-center mt-2"><a href="tel:+50252927466" class="flex items-center hover:text-blue-100 transition"><i class="fas fa-phone w-6"></i> 5292-7466</a></p>
+                        <p class="text-blue-200 flex items-center mt-1 text-sm"><a href="mailto:mavis_oramos@hotmail.com" class="flex items-center hover:text-white transition"><i class="fas fa-envelope w-6"></i> mavis_oramos@hotmail.com</a></p>
+                    </div>
+                    <div>
+                        <p class="text-lg font-semibold text-brand-blue">David López</p>
+                        <p class="text-blue-200 flex items-center mt-2"><a href="tel:+50242911813" class="flex items-center hover:text-blue-100 transition"><i class="fas fa-phone w-6"></i> 4291-1813</a></p>
+                        <p class="text-blue-200 flex items-center mt-1 text-sm"><a href="mailto:operaciones.morg@gmail.com" class="flex items-center hover:text-white transition"><i class="fas fa-envelope w-6"></i> operaciones.morg@gmail.com</a></p>
+                    </div>
                 </div>
 
-                <div class="bg-gray-800 p-8 rounded-xl border-t-4 border-yellow-500 hover:transform hover:-translate-y-1 transition duration-300">
-                    <h3 class="text-2xl font-bold text-white mb-4 border-b border-gray-600 pb-2">China / Asia</h3>
-                    <p class="text-lg font-semibold text-yellow-500">Green Link Solutions</p>
-                    <p class="text-lg font-semibold text-white mt-2">Ava Tsang</p>
-                    <p class="text-gray-300 flex items-center mt-2"><i class="fas fa-phone w-6"></i> +86 13113949943</p>
-                    <p class="text-gray-300 flex items-center mt-1"><i class="fas fa-envelope w-6"></i> 43791756@qq.com</p>
+                <!-- China / Asia -->
+                <div class="bg-white bg-opacity-15 backdrop-blur-sm p-8 rounded-xl border border-white border-opacity-20 hover:bg-opacity-15 transition duration-300">
+                    <h3 class="text-2xl font-bold text-white mb-4 border-b border-yellow-400 border-opacity-30 pb-3">
+                        <i class="fas fa-globe-asia text-yellow-400 mr-2"></i> China / Asia
+                    </h3>
+                    <p class="text-lg font-semibold text-yellow-400">Green Link Solutions</p>
+                    <p class="text-lg font-semibold text-white mt-3">Ava Tsang</p>
+                    <p class="text-blue-200 flex items-center mt-2"><a href="tel:+8613113949943" class="flex items-center hover:text-yellow-200 transition"><i class="fas fa-phone w-6 text-yellow-300"></i> +86 13113949943</a></p>
+                    <p class="text-blue-200 flex items-center mt-1 text-sm"><a href="mailto:43791756@qq.com" class="flex items-center hover:text-white transition"><i class="fas fa-envelope w-6"></i> 43791756@qq.com</a></p>
                 </div>
-
             </div>
 
-            <div class="mt-16 no-print">
-                <a href="https://wa.me/50252927466" target="_blank" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-brand-dark bg-brand-green rounded-full hover:bg-green-400 transition shadow-lg hover:shadow-xl">
+            <!-- Botón WhatsApp -->
+            <div class="mt-14 no-print">
+                <a href="https://wa.me/50252927466" target="_blank" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-brand-blue rounded-full hover:bg-blue-600 transition shadow-lg hover:shadow-xl">
                     <i class="fab fa-whatsapp text-2xl mr-3"></i> Chatear por WhatsApp
                 </a>
+            </div>
+
+            <!-- Logo en footer -->
+            <div class="mt-12 opacity-60">
+                <img src="media/img379.jpg" alt="Morg Logo" class="h-12 w-auto mx-auto rounded opacity-92">
             </div>
         </div>
     </section>
 
-    <!-- Botón flotante de WhatsApp (Visible en toda la navegación) -->
+    <!-- ==================== BOTÓN FLOTANTE WHATSAPP ==================== -->
     <div class="fixed bottom-6 right-6 z-50 no-print flex flex-col items-end group">
-        <!-- Burbuja de mensaje (Tooltip) -->
         <div class="bg-white text-gray-800 text-sm py-1 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mb-2 font-semibold border border-gray-100">
             ¡Escríbenos!
         </div>
-        <!-- Botón circular con animación de pulso -->
         <a href="https://wa.me/50252927466" target="_blank" rel="noopener noreferrer" class="relative bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform duration-300">
             <i class="fab fa-whatsapp text-4xl relative z-10"></i>
-            <!-- Efecto visual de onda -->
             <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-40"></span>
         </a>
     </div>
