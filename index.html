@@ -95,6 +95,31 @@
             pointer-events: none;
         }
 
+        /* Mobile menu */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .mobile-menu.open {
+            max-height: 400px;
+        }
+
+        /* Responsive text overflow */
+        .break-email {
+            word-break: break-all;
+            overflow-wrap: break-word;
+        }
+
+        /* Responsive number circle */
+        @media (max-width: 640px) {
+            .number-circle {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+
         /* Print styles */
         @media print {
             @page { size: A4 landscape; margin: 0; }
@@ -134,9 +159,26 @@
                     <a href="#transparencia" class="hover:text-brand-blue transition-colors duration-200">Transparencia</a>
                     <a href="#contacto" class="hover:text-brand-blue transition-colors duration-200">Contacto</a>
                 </div>
-                <a href="/pdf/" target="_blank" class="bg-brand-blue hover:bg-blue-700 px-4 py-2 rounded-lg text-white text-sm font-semibold transition flex items-center shadow-md">
-                    <i class="fas fa-file-pdf mr-2"></i> Ver PDF
-                </a>
+                <div class="flex items-center gap-3">
+                    <a href="/pdf/" target="_blank" class="bg-brand-blue hover:bg-blue-700 px-3 py-2 rounded-lg text-white text-xs sm:text-sm font-semibold transition flex items-center shadow-md">
+                        <i class="fas fa-file-pdf mr-1 sm:mr-2"></i> <span class="hidden sm:inline">Ver</span> PDF
+                    </a>
+                    <!-- Hamburger button (mobile) -->
+                    <button id="menuBtn" class="md:hidden text-white text-2xl focus:outline-none" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobileMenu" class="mobile-menu md:hidden bg-brand-navy border-t border-white/10">
+                <div class="flex flex-col py-3 px-4 space-y-3 text-sm font-medium">
+                    <a href="#inicio" class="hover:text-brand-blue transition py-1" onclick="document.getElementById('mobileMenu').classList.remove('open')">Inicio</a>
+                    <a href="#quienes-somos" class="hover:text-brand-blue transition py-1" onclick="document.getElementById('mobileMenu').classList.remove('open')">Nosotros</a>
+                    <a href="#servicios" class="hover:text-brand-blue transition py-1" onclick="document.getElementById('mobileMenu').classList.remove('open')">Servicios</a>
+                    <a href="#ahorro" class="hover:text-brand-blue transition py-1" onclick="document.getElementById('mobileMenu').classList.remove('open')">Ahorro</a>
+                    <a href="#transparencia" class="hover:text-brand-blue transition py-1" onclick="document.getElementById('mobileMenu').classList.remove('open')">Transparencia</a>
+                    <a href="#contacto" class="hover:text-brand-blue transition py-1" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contacto</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -162,16 +204,16 @@
                     <img src="media/img575.jpg" alt="Morg Green Link Logo" class="h-28 md:h-36 w-auto mx-auto lg:mx-0 rounded-xl shadow-2xl">
                 </div>
                 
-                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-3 animate-fade-up delay-100">
+                <h1 class="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-3 animate-fade-up delay-100">
                     Morg
                 </h1>
-                <p class="text-2xl md:text-3xl font-light text-blue-200 mb-2 animate-fade-up delay-200">
+                <p class="text-lg sm:text-2xl md:text-3xl font-light text-blue-200 mb-2 animate-fade-up delay-200">
                     Asesoría Logística
                 </p>
                 
                 <div class="w-20 h-1 bg-brand-blue mx-auto lg:mx-0 my-6 rounded-full animate-fade-up delay-200"></div>
                 
-                <h2 class="text-xl md:text-2xl font-bold text-white mb-8 animate-fade-up delay-300">
+                <h2 class="text-base sm:text-xl md:text-2xl font-bold text-white mb-8 animate-fade-up delay-300">
                     GREEN LINK <span class="font-light text-blue-300">SOLUTIONS TRADING</span>
                 </h2>
 
@@ -211,7 +253,7 @@
         <div class="max-w-6xl mx-auto px-6 w-full relative z-10">
             <!-- Título -->
             <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">¿Quiénes Somos?</h2>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">¿Quiénes Somos?</h2>
                 <div class="w-20 h-1 bg-brand-blue mx-auto mt-4 rounded-full"></div>
             </div>
 
@@ -264,7 +306,7 @@
 
         <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
             <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">Nuestros Servicios</h2>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">Nuestros Servicios</h2>
                 <div class="w-20 h-1 bg-brand-blue mx-auto mt-4 rounded-full"></div>
             </div>
 
@@ -333,7 +375,7 @@
     <section id="ahorro" class="slide-section py-20 bg-white min-h-screen flex flex-col justify-center relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6 w-full relative z-10">
             <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">Ahorro en Costos Logísticos</h2>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">Ahorro en Costos Logísticos</h2>
                 <div class="w-20 h-1 bg-brand-blue mx-auto mt-4 rounded-full"></div>
                 <p class="text-xl text-gray-600 mt-6">Diseñamos estrategias personalizadas para reducir costos logísticos.</p>
             </div>
@@ -346,7 +388,7 @@
 
                 <!-- Lista de beneficios -->
                 <div class="lg:w-3/5">
-                    <div class="bg-brand-navy text-white rounded-2xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
+                    <div class="bg-brand-navy text-white rounded-2xl p-5 sm:p-8 md:p-10 shadow-2xl relative overflow-hidden">
                         <i class="fas fa-piggy-bank absolute -bottom-8 -right-8 text-8xl opacity-10 text-brand-blue"></i>
                         
                         <ul class="space-y-5 text-lg relative z-10">
@@ -386,7 +428,7 @@
 
         <div class="max-w-6xl mx-auto px-6 w-full relative z-10">
             <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">Transparencia y Honestidad</h2>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">Transparencia y Honestidad</h2>
                 <div class="w-20 h-1 bg-brand-blue mx-auto mt-4 rounded-full"></div>
             </div>
 
@@ -440,15 +482,15 @@
         <img src="media/img386.jpg" alt="" class="deco-box left-0 bottom-10 w-36 opacity-5 hidden lg:block">
 
         <div class="max-w-4xl mx-auto px-6 w-full text-center relative z-10">
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-3 text-white">¡Ponte en contacto!</h2>
+            <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-3 text-white">¡Ponte en contacto!</h2>
             <div class="w-20 h-1 bg-brand-blue mx-auto mt-3 mb-8 rounded-full"></div>
             <p class="text-xl text-blue-200 mb-12">Estamos listos para optimizar su cadena de suministro.</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-2xl mx-auto">
                 
                 <!-- Guatemala / Latam -->
-                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white border-opacity-20 hover:bg-white/20 transition duration-300">
-                    <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-400 border-opacity-30 pb-3">
+                <div class="bg-white/10 backdrop-blur-sm p-5 sm:p-8 rounded-xl border border-white border-opacity-20 hover:bg-white/20 transition duration-300">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-4 border-b border-blue-400 border-opacity-30 pb-3">
                         <i class="fas fa-globe-americas text-brand-blue mr-2"></i> Guatemala / Latam
                     </h3>
                     <div class="mb-5">
@@ -465,8 +507,8 @@
                 </div>
 
                 <!-- China / Asia -->
-                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white border-opacity-20 hover:bg-white/20 transition duration-300">
-                    <h3 class="text-2xl font-bold text-white mb-4 border-b border-yellow-400 border-opacity-30 pb-3">
+                <div class="bg-white/10 backdrop-blur-sm p-5 sm:p-8 rounded-xl border border-white border-opacity-20 hover:bg-white/20 transition duration-300">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-4 border-b border-yellow-400 border-opacity-30 pb-3">
                         <i class="fas fa-globe-asia text-yellow-400 mr-2"></i> China / Asia
                     </h3>
                     <p class="text-lg font-semibold text-yellow-400">Green Link Solutions</p>
