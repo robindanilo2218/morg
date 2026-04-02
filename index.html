@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Morg & Green Link - Asesoría Logística</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome para iconos -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -33,37 +35,94 @@
     </script>
 
     <style>
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Montserrat', sans-serif; }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
 
         /* Animaciones */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes pulse-soft {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        .animate-fade-up { animation: fadeInUp 0.8s ease-out forwards; }
-        .animate-fade-left { animation: fadeInLeft 0.8s ease-out forwards; }
-        .animate-fade-right { animation: fadeInRight 0.8s ease-out forwards; }
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-        .delay-400 { animation-delay: 0.4s; }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
 
-        /* Overlay para portada */
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse-soft {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-fade-left {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-fade-right {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+
+        /* Overlay para portada (Opacidad reducida para que la imagen se vea más fuerte) */
         .cover-overlay {
-            background: linear-gradient(135deg, rgba(0,27,96,0.92) 0%, rgba(0,92,179,0.85) 100%);
+            background: linear-gradient(135deg, rgba(0, 27, 96, 0.75) 0%, rgba(0, 92, 179, 0.65) 100%);
         }
 
         /* Número decorativo */
@@ -82,8 +141,9 @@
         /* Card hover effect */
         .service-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,27,96,0.15);
+            box-shadow: 0 12px 40px rgba(0, 27, 96, 0.15);
         }
+
         .service-card {
             transition: all 0.3s ease;
         }
@@ -101,6 +161,7 @@
             overflow: hidden;
             transition: max-height 0.3s ease-out;
         }
+
         .mobile-menu.open {
             max-height: 400px;
         }
@@ -122,9 +183,20 @@
 
         /* Print styles */
         @media print {
-            @page { size: A4 landscape; margin: 0; }
-            body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-            .no-print { display: none !important; }
+            @page {
+                size: A4 landscape;
+                margin: 0;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
             .slide-section {
                 page-break-after: always;
                 page-break-inside: avoid;
@@ -141,30 +213,40 @@
         }
     </style>
 </head>
-<body class="bg-brand-bg text-gray-800 font-montserrat antialiased">
+
+<body class="bg-gray-50 text-gray-800 font-montserrat antialiased relative">
+
+    <!-- Global Soft Background Map -->
+    <div class="fixed inset-0 z-[-1] opacity-40 pointer-events-none"
+        style="background-image: url('media/Map.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    </div>
 
     <!-- ==================== NAVBAR ==================== -->
     <nav class="no-print bg-brand-navy text-white sticky top-0 z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <a href="#inicio" class="flex items-center gap-3">
-                    <img src="media/img379.jpg" alt="Morg Logo" class="h-10 w-auto rounded">
+                    <img src="media/morglogowr.png" alt="Morg Logo" class="h-10 w-auto max-w-full object-contain rounded">
                     <span class="font-bold text-lg tracking-wide">Morg & Green Link</span>
                 </a>
                 <div class="hidden md:flex space-x-6 text-sm font-medium">
                     <a href="#inicio" class="hover:text-brand-blue transition-colors duration-200">Inicio</a>
                     <a href="#quienes-somos" class="hover:text-brand-blue transition-colors duration-200">Nosotros</a>
                     <a href="#servicios" class="hover:text-brand-blue transition-colors duration-200">Servicios</a>
+                    <a href="#alianzas" class="hover:text-brand-blue transition-colors duration-200">Alianzas</a>
                     <a href="#ahorro" class="hover:text-brand-blue transition-colors duration-200">Ahorro</a>
-                    <a href="#transparencia" class="hover:text-brand-blue transition-colors duration-200">Transparencia</a>
+                    <a href="#transparencia"
+                        class="hover:text-brand-blue transition-colors duration-200">Transparencia</a>
                     <a href="#contacto" class="hover:text-brand-blue transition-colors duration-200">Contacto</a>
                 </div>
                 <div class="flex items-center gap-3">
-                    <a href="/pdf/" target="_blank" class="bg-brand-blue hover:bg-blue-700 px-3 py-2 rounded-lg text-white text-xs sm:text-sm font-semibold transition flex items-center shadow-md">
+                    <a href="/pdf/" target="_blank"
+                        class="bg-brand-blue hover:bg-blue-700 px-3 py-2 rounded-lg text-white text-xs sm:text-sm font-semibold transition flex items-center shadow-md">
                         <i class="fas fa-file-pdf mr-1 sm:mr-2"></i> <span class="hidden sm:inline">Ver</span> PDF
                     </a>
                     <!-- Hamburger button (mobile) -->
-                    <button id="menuBtn" class="md:hidden text-white text-2xl focus:outline-none" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+                    <button id="menuBtn" class="md:hidden text-white text-2xl focus:outline-none"
+                        onclick="document.getElementById('mobileMenu').classList.toggle('open')">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
@@ -172,98 +254,134 @@
             <!-- Mobile menu -->
             <div id="mobileMenu" class="mobile-menu md:hidden bg-brand-navy border-t border-white/10">
                 <div class="flex flex-col py-3 px-4 space-y-3 text-sm font-medium">
-                    <a href="#inicio" class="hover:text-brand-blue transition py-1" onclick="document.getElementById('mobileMenu').classList.remove('open')">Inicio</a>
-                    <a href="#quienes-somos" class="hover:text-brand-blue transition py-1" onclick="document.getElementById('mobileMenu').classList.remove('open')">Nosotros</a>
-                    <a href="#servicios" class="hover:text-brand-blue transition py-1" onclick="document.getElementById('mobileMenu').classList.remove('open')">Servicios</a>
-                    <a href="#ahorro" class="hover:text-brand-blue transition py-1" onclick="document.getElementById('mobileMenu').classList.remove('open')">Ahorro</a>
-                    <a href="#transparencia" class="hover:text-brand-blue transition py-1" onclick="document.getElementById('mobileMenu').classList.remove('open')">Transparencia</a>
-                    <a href="#contacto" class="hover:text-brand-blue transition py-1" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contacto</a>
+                    <a href="#inicio" class="hover:text-brand-blue transition py-1"
+                        onclick="document.getElementById('mobileMenu').classList.remove('open')">Inicio</a>
+                    <a href="#quienes-somos" class="hover:text-brand-blue transition py-1"
+                        onclick="document.getElementById('mobileMenu').classList.remove('open')">Nosotros</a>
+                    <a href="#servicios" class="hover:text-brand-blue transition py-1"
+                        onclick="document.getElementById('mobileMenu').classList.remove('open')">Servicios</a>
+                    <a href="#ahorro" class="hover:text-brand-blue transition py-1"
+                        onclick="document.getElementById('mobileMenu').classList.remove('open')">Ahorro</a>
+                    <a href="#transparencia" class="hover:text-brand-blue transition py-1"
+                        onclick="document.getElementById('mobileMenu').classList.remove('open')">Transparencia</a>
+                    <a href="#contacto" class="hover:text-brand-blue transition py-1"
+                        onclick="document.getElementById('mobileMenu').classList.remove('open')">Contacto</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- ==================== PÁGINA 1: PORTADA ==================== -->
-    <section id="inicio" class="slide-section relative min-h-screen flex items-center overflow-hidden">
-        <!-- Imagen de fondo (img435) -->
-        <div class="absolute inset-0">
-            <img src="media/img435.jpg" alt="Fondo portada" class="w-full h-full object-cover">
+    <section id="inicio" class="relative overflow-hidden flex flex-col">
+        <!-- Imagen de fondo (img435) - Cubre el alto total del bloque (Portada + Texto) -->
+        <div class="absolute inset-0 z-0 bg-brand-navy">
+            <!-- Inicia desde el centro (50%) -->
+            <img id="hero-bg" src="media/img435.jpg" alt="Fondo portada" 
+                class="w-full h-full object-cover lg:object-top" 
+                style="object-position: 50% top; will-change: object-position;">
+            <!-- Overlay azul original -->
+            <div class="absolute inset-0 cover-overlay"></div>
         </div>
-        <!-- Overlay azul -->
-        <div class="absolute inset-0 cover-overlay"></div>
 
-        <!-- Cajas decorativas -->
-        <img src="media/img429.jpg" alt="" class="deco-box left-0 top-20 w-48 opacity-10 hidden lg:block">
-        <img src="media/img386.jpg" alt="" class="deco-box right-0 bottom-20 w-44 opacity-10 hidden lg:block">
-        
-        <div class="max-w-6xl mx-auto px-6 w-full relative z-10 flex flex-col lg:flex-row items-center gap-12 py-16">
-            <!-- Contenido izquierdo -->
-            <div class="flex-1 text-center lg:text-left text-white">
-                <!-- Logo grande -->
-                <div class="mb-8 animate-fade-up">
-                    <img src="media/img575.jpg" alt="Morg Green Link Logo" class="h-28 md:h-36 w-auto mx-auto lg:mx-0 rounded-xl shadow-2xl">
+        <!-- Espacio muerto para dejar la portada libre (85vh de pura imagen visible) -->
+        <div class="w-full h-[85vh] relative z-10 flex items-center justify-center pointer-events-none">
+        </div>
+
+        <!-- Contenedor del Hero transparente superpuesto directamente -->
+        <div class="relative z-10 w-full pt-4 pb-20 lg:pt-10 lg:pb-32 px-6">
+            <!-- Cambiamos items-center por items-start para que el barco quede alineado desde arriba (con el logo) -->
+            <div class="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 xl:gap-20">
+                
+                <!-- Contenido izquierdo (Texto y Logo) -->
+                <div class="w-full lg:w-1/2 text-center lg:text-left text-white flex flex-col items-center lg:items-start">
+                    
+                    <!-- Logo grande centralizado o ladeado -->
+                    <div class="mb-8 animate-fade-up">
+                        <img src="media/morglogowr.png" alt="Morg Logo Principal"
+                            class="h-auto w-auto max-w-full max-h-40 sm:max-h-48 md:max-h-56 lg:max-h-64 object-contain drop-shadow-2xl rounded-3xl"
+                            style="-webkit-mask-image: linear-gradient(to bottom, transparent 0, transparent 6px, black 24px, black calc(100% - 24px), transparent calc(100% - 6px), transparent 100%), linear-gradient(to right, transparent 0, transparent 6px, black 24px, black calc(100% - 24px), transparent calc(100% - 6px), transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, transparent 0, transparent 6px, black 24px, black calc(100% - 24px), transparent calc(100% - 6px), transparent 100%), linear-gradient(to right, transparent 0, transparent 6px, black 24px, black calc(100% - 24px), transparent calc(100% - 6px), transparent 100%); mask-composite: intersect;">
+                    </div>
+
+                    <p class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-blue-200 mb-2 animate-fade-up delay-200">
+                        Asesoría Logística
+                    </p>
+
+                    <div class="w-24 h-1 bg-brand-blue my-6 rounded-full animate-fade-up delay-200"></div>
+
+                    <h2 class="text-lg sm:text-2xl md:text-3xl font-bold text-white mb-10 animate-fade-up delay-300 tracking-wide">
+                        GREEN LINK <span class="font-light text-blue-300">SOLUTIONS TRADING</span>
+                    </h2>
+
+                    <!-- Mavis Ramos Card (Hero) -->
+                    <div class="animate-fade-up delay-400 w-full max-w-[22rem] sm:max-w-md lg:max-w-lg mx-auto lg:mx-0">
+                        <div
+                            class="flex rounded-[2rem] overflow-hidden shadow-2xl mb-5 w-full transition-transform hover:scale-105 duration-300 border border-white/20">
+                            <!-- Left (Dark) -->
+                            <div
+                                class="bg-[#001746] w-[40%] flex items-stretch justify-center relative shadow-[5px_0_15px_rgba(0,0,0,0.5)] z-10 p-0 border-r border-[#001746]">
+                                <img src="media/morglogo.png" alt="Morg Logo"
+                                    class="w-full h-full object-contain scale-[1.15]">
+                            </div>
+                            <!-- Right (Light) -->
+                            <div class="bg-[#0066cc] py-5 px-3 sm:px-5 w-[60%] flex gap-2 sm:gap-4 items-center">
+                                <a href="https://wa.me/50252927466" target="_blank" rel="noopener noreferrer" class="rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shrink-0 hover:scale-110 transition-transform cursor-pointer bg-white/10">
+                                    <i class="fab fa-whatsapp text-2xl sm:text-3xl text-white"></i>
+                                </a>
+                                <div class="flex flex-col text-white text-left">
+                                    <span class="text-xs sm:text-sm md:text-base font-medium tracking-wide">Mavis Ramos</span>
+                                    <a href="tel:+50252927466"
+                                        class="text-lg sm:text-2xl md:text-3xl font-bold tracking-wider leading-none mt-1 hover:text-blue-200 transition-colors">5292-7466</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-center lg:justify-start gap-3 mt-4 text-white hover:text-blue-200 transition-colors w-full px-2">
+                            <div class="bg-white/20 rounded-full w-8 h-8 flex items-center justify-center shrink-0">
+                                <i class="fas fa-envelope text-sm"></i>
+                            </div>
+                            <div class="flex flex-col sm:flex-row sm:items-center text-sm md:text-base gap-1 sm:gap-3 text-center sm:text-left">
+                                <a href="mailto:mavis@morg.broker" class="hover:text-white transition font-medium">mavis@morg.broker</a>
+                                <span class="hidden sm:inline text-white/50">|</span>
+                                <a href="mailto:mavis_oramos@hotmail.com" class="hover:text-white transition text-xs sm:text-sm">mavis_oramos@hotmail.com</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <p class="text-lg sm:text-2xl md:text-3xl font-light text-blue-200 mb-2 animate-fade-up delay-200">
-                    Asesoría Logística
-                </p>
-                
-                <div class="w-20 h-1 bg-brand-blue mx-auto lg:mx-0 my-6 rounded-full animate-fade-up delay-200"></div>
-                
-                <h2 class="text-base sm:text-xl md:text-2xl font-bold text-white mb-8 animate-fade-up delay-300">
-                    GREEN LINK <span class="font-light text-blue-300">SOLUTIONS TRADING</span>
-                </h2>
 
-                <!-- Info de contacto -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 animate-fade-up delay-400">
-                    <div class="bg-white/30 backdrop-blur-sm p-4 rounded-xl border border-white border-opacity-20">
-                        <p class="font-bold text-brand-blue text-lg">Lcda. Mavis Ramos</p>
-                        <p class="text-sm mt-1"><a href="https://wa.me/50252927466" target="_blank" class="hover:text-green-300 transition"><i class="fab fa-whatsapp mr-1 text-green-400"></i> 5292-7466</a></p>
-                        <p class="text-sm mt-1"><a href="tel:+50252927466" class="hover:text-blue-300 transition"><i class="fas fa-phone mr-1 text-blue-300"></i> 5292-7466</a></p>
-                        <p class="text-xs mt-1 text-blue-200"><a href="mailto:mavis_oramos@hotmail.com" class="hover:text-white transition"><i class="fas fa-envelope mr-1"></i> mavis_oramos@hotmail.com</a></p>
-                    </div>
-                    <div class="bg-white/30 backdrop-blur-sm p-4 rounded-xl border border-white border-opacity-20">
-                        <p class="font-bold text-brand-blue text-lg">David López</p>
-                        <p class="text-sm mt-1"><a href="tel:+50242911813" class="hover:text-blue-300 transition"><i class="fas fa-phone mr-1 text-blue-300"></i> 4291-1813</a></p>
-                        <p class="text-xs mt-1 text-blue-200"><a href="mailto:operaciones.morg@gmail.com" class="hover:text-white transition"><i class="fas fa-envelope mr-1"></i> operaciones.morg@gmail.com</a></p>
-                    </div>
-                    <div class="bg-white/30 backdrop-blur-sm p-4 rounded-xl border border-white border-opacity-20">
-                        <p class="font-bold text-yellow-400 text-lg">Ava Tsang</p>
-                        <p class="text-sm mt-1"><a href="tel:+8613113949943" class="hover:text-yellow-200 transition"><i class="fas fa-phone mr-1 text-yellow-300"></i> +86 13113949943</a></p>
-                        <p class="text-xs mt-1 text-blue-200"><a href="mailto:43791756@qq.com" class="hover:text-white transition"><i class="fas fa-envelope mr-1"></i> 43791756@qq.com</a></p>
-                    </div>
+                <!-- Imagen superpuesta derecha (boat.png) empujada hacia arriba por el flex-start -->
+                <div class="w-full lg:w-1/2 flex justify-center lg:justify-end items-start mt-12 lg:mt-0 animate-fade-right delay-300">
+                    <!-- Tamaño dinámico: 95% en móviles, creciendo hasta ser gigante en pantallas XL -->
+                    <img src="media/boat.png" alt="Barco Morg Presentación"
+                        class="w-[95%] sm:w-[85%] md:w-[75%] lg:w-[130%] xl:w-[150%] max-w-[400px] sm:max-w-[500px] md:max-w-xl lg:max-w-2xl xl:max-w-[800px] object-contain drop-shadow-[0_25px_45px_rgba(0,100,255,0.4)] hover:scale-[1.03] transition-transform duration-700 ease-in-out">
                 </div>
-            </div>
-
-            <!-- Imagen superpuesta derecha (img547) -->
-            <div class="flex-shrink-0 hidden lg:block animate-fade-right delay-300">
-                <img src="media/img547.jpg" alt="Morg Presentación" class="w-80 xl:w-96 rounded-2xl shadow-2xl border-4 border-white border-opacity-20">
             </div>
         </div>
     </section>
 
     <!-- ==================== PÁGINA 2: ¿QUIÉNES SOMOS? ==================== -->
-    <section id="quienes-somos" class="slide-section py-20 bg-white min-h-screen flex flex-col justify-center relative overflow-hidden">
-        <!-- Caja decorativa -->
-        <img src="media/img386.jpg" alt="" class="deco-box right-0 top-10 w-40 hidden lg:block">
+    <section id="quienes-somos"
+        class="slide-section py-20 bg-white/85 min-h-screen flex flex-col justify-center relative overflow-hidden">
+        <!-- Caja decorativa eliminada -->
 
         <div class="max-w-6xl mx-auto px-6 w-full relative z-10">
             <!-- Título -->
             <div class="text-center mb-12">
-                <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">¿Quiénes Somos?</h2>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">
+                    ¿Quiénes Somos?</h2>
                 <div class="w-20 h-1 bg-brand-blue mx-auto mt-4 rounded-full"></div>
             </div>
 
             <!-- Barco + Descripción -->
             <div class="flex flex-col lg:flex-row items-center gap-10 mb-16">
                 <div class="lg:w-1/2">
-                    <img src="media/img123.jpg" alt="Barco de carga" class="w-full rounded-2xl shadow-xl">
+                    <img src="media/boat2.png" alt="Barco de carga" class="w-full h-auto max-w-full object-contain drop-shadow-lg mix-blend-multiply">
                 </div>
                 <div class="lg:w-1/2">
                     <p class="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
-                        Somos una empresa dedicada a brindar <strong class="text-brand-navy">asesoría logística y aduanal</strong> a importadores.
+                        Somos una empresa dedicada a brindar <strong class="text-brand-navy">asesoría logística y
+                            aduanal</strong> a importadores.
                     </p>
-                    
+
                     <!-- Áreas de expertise -->
                     <div class="grid grid-cols-2 gap-4">
                         <div class="text-center p-5 bg-brand-light rounded-xl border-l-4 border-brand-navy">
@@ -290,78 +408,111 @@
             <div class="bg-brand-navy text-white p-8 md:p-10 rounded-2xl text-center shadow-xl">
                 <h3 class="text-xl font-bold mb-3 text-brand-blue uppercase tracking-wider">Nuestra Misión</h3>
                 <p class="text-xl md:text-3xl font-light">
-                    Simplificar tus procesos logísticos y <strong class="font-bold text-blue-300">maximizar tus ganancias.</strong>
+                    Simplificar tus procesos logísticos y <strong class="font-bold text-blue-300">maximizar tus
+                        ganancias.</strong>
                 </p>
             </div>
         </div>
     </section>
 
     <!-- ==================== PÁGINA 3: NUESTROS SERVICIOS ==================== -->
-    <section id="servicios" class="slide-section py-20 bg-brand-light min-h-screen flex flex-col justify-center relative overflow-hidden">
-        <!-- Caja decorativa -->
-        <img src="media/img429.jpg" alt="" class="deco-box right-0 bottom-10 w-36 hidden lg:block">
+    <section id="servicios"
+        class="slide-section py-20 bg-brand-light/85 min-h-screen flex flex-col justify-center relative overflow-hidden">
+        <!-- Caja decorativa eliminada -->
 
         <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
             <div class="text-center mb-12">
-                <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">Nuestros Servicios</h2>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">
+                    Nuestros Servicios</h2>
                 <div class="w-20 h-1 bg-brand-blue mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <div class="flex flex-col lg:flex-row gap-10 items-stretch">
-                <!-- Imagen lateral izquierda (img388 - contenedores) -->
-                <div class="hidden lg:block lg:w-1/4 flex-shrink-0">
-                    <img src="media/img388.jpg" alt="Contenedores" class="w-full h-full object-cover rounded-2xl shadow-xl">
+            <!-- Contenedor Principal (Actúa como marco con imagen de fondo en móviles, y filas en escritorio) -->
+            <div class="flex flex-col lg:flex-row gap-0 lg:gap-10 items-stretch relative rounded-[2.5rem] lg:rounded-none overflow-hidden lg:overflow-visible shadow-2xl lg:shadow-none">
+                
+                <!-- Imagen lateral / Fondo en mobile -->
+                <div class="absolute inset-0 z-0 lg:relative lg:w-1/4 lg:flex-shrink-0">
+                    <img src="media/img388.jpg" alt="Contenedores" 
+                         class="w-full h-full object-cover lg:rounded-3xl lg:drop-shadow-lg opacity-90 lg:opacity-80 mix-blend-multiply lg:mix-blend-normal">
+                    <!-- Filtro para mejorar lectura en móvil si la imagen es agresiva -->
+                    <div class="absolute inset-0 bg-[#001b60]/10 lg:hidden"></div>
                 </div>
 
-                <!-- Grid de servicios -->
-                <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div class="service-card bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue flex items-start">
-                        <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                <!-- Grid de servicios (Superpuesto a la imagen en móvil) -->
+                <div class="relative z-10 flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5 w-full p-6 sm:p-8 lg:p-0">
+                    
+                    <!-- 1. Seguro de mercancía -->
+                    <div
+                        class="service-card bg-white/95 backdrop-blur-sm lg:bg-white p-6 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] lg:shadow-md border-l-4 border-brand-blue flex items-start">
+                        <div
+                            class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-shield-alt text-white"></i>
+                        </div>
+                        <p class="text-gray-800 font-medium">Seguro de mercancía.</p>
+                    </div>
+
+                    <!-- 2. Pruebas de laboratorio -->
+                    <div
+                        class="service-card bg-white/95 backdrop-blur-sm lg:bg-white p-6 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] lg:shadow-md border-l-4 border-brand-blue flex items-start">
+                        <div
+                            class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-flask text-white"></i>
+                        </div>
+                        <p class="text-gray-800 font-medium">Pruebas de laboratorio químico en China.</p>
+                    </div>
+
+                    <!-- 3. Servicio de cadena de suministro -->
+                    <div
+                        class="service-card bg-white/95 backdrop-blur-sm lg:bg-white p-6 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] lg:shadow-md border-l-4 border-brand-blue flex items-start">
+                        <div
+                            class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                             <i class="fas fa-box-open text-white"></i>
                         </div>
                         <p class="text-gray-800 font-medium">Servicio de cadena de suministro desde China.</p>
                     </div>
 
-                    <div class="service-card bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue flex items-start">
-                        <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                    <!-- 4. Inspección y verificación -->
+                    <div
+                        class="service-card bg-white/95 backdrop-blur-sm lg:bg-white p-6 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] lg:shadow-md border-l-4 border-brand-blue flex items-start">
+                        <div
+                            class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                             <i class="fas fa-search-location text-white"></i>
                         </div>
-                        <p class="text-gray-800 font-medium">Inspección y verificación de fábricas en China.</p>
+                        <p class="text-gray-800 font-medium">Inspección y verificación de fábricas en China, Vietnam,
+                            India, etc.</p>
                     </div>
 
-                    <div class="service-card bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue flex items-start">
-                        <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                    <!-- 5. Asesoría logística internacional -->
+                    <div
+                        class="service-card bg-white/95 backdrop-blur-sm lg:bg-white p-6 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] lg:shadow-md border-l-4 border-brand-blue flex items-start">
+                        <div
+                            class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                             <i class="fas fa-route text-white"></i>
                         </div>
-                        <p class="text-gray-800 font-medium">Asesoría logística internacional (evaluación de rutas, tiempos y costos).</p>
+                        <p class="text-gray-800 font-medium">Asesoría logística internacional (evaluación de rutas,
+                            tiempos y costos).</p>
                     </div>
 
-                    <div class="service-card bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue flex items-start">
-                        <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                    <!-- 6. Gestión de trámites aduanales -->
+                    <div
+                        class="service-card bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue flex items-start">
+                        <div
+                            class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                             <i class="fas fa-file-signature text-white"></i>
                         </div>
-                        <p class="text-gray-800 font-medium">Gestión de trámites aduanales (DUCA, clasificación arancelaria, etc.).</p>
+                        <p class="text-gray-800 font-medium">Gestión de trámites aduanales (DUCA, clasificación
+                            arancelaria, etc.).</p>
                     </div>
 
-                    <div class="service-card bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue flex items-start">
-                        <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                            <i class="fas fa-balance-scale text-white"></i>
-                        </div>
-                        <p class="text-gray-800 font-medium">Asesoría aduanal especializada (cumplimiento normativo y prevención de sanciones).</p>
-                    </div>
-
-                    <div class="service-card bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue flex items-start">
-                        <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                    <!-- 7. Atención personalizada (Centrada al final) -->
+                    <div
+                        class="service-card bg-white/95 backdrop-blur-sm lg:bg-white p-6 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] lg:shadow-md border-l-4 border-brand-blue flex items-start md:col-span-2 md:w-[60%] md:mx-auto">
+                        <div
+                            class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                             <i class="fas fa-users text-white"></i>
                         </div>
-                        <p class="text-gray-800 font-medium">Atención personalizada durante todo el proceso de importación.</p>
-                    </div>
-
-                    <div class="service-card bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue flex items-start md:col-span-2 md:w-1/2 md:mx-auto">
-                        <div class="w-10 h-10 bg-brand-navy rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                            <i class="fas fa-shield-virus text-white"></i>
-                        </div>
-                        <p class="text-gray-800 font-medium">Seguro de mercancía.</p>
+                        <p class="text-gray-800 font-medium">Atención personalizada durante todo el proceso de
+                            importación.</p>
                     </div>
                 </div>
             </div>
@@ -369,46 +520,72 @@
     </section>
 
     <!-- ==================== PÁGINA 4: AHORRO EN COSTOS ==================== -->
-    <section id="ahorro" class="slide-section py-20 bg-white min-h-screen flex flex-col justify-center relative overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6 w-full relative z-10">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">Ahorro en Costos Logísticos</h2>
-                <div class="w-20 h-1 bg-brand-blue mx-auto mt-4 rounded-full"></div>
-                <p class="text-xl text-gray-600 mt-6">Diseñamos estrategias personalizadas para reducir costos logísticos.</p>
+    <section id="ahorro"
+        class="slide-section min-h-screen flex flex-col relative overflow-hidden bg-white">
+        
+        <!-- Zona Blanca Superior (Título) -->
+        <div class="w-full pt-20 pb-10 sm:pb-12 px-6 relative z-20 bg-white shadow-sm">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-brand-navy uppercase tracking-wide">
+                    Ahorro en Costos Logísticos</h2>
+                <div class="w-24 h-1.5 bg-brand-blue mx-auto mt-6 rounded-full"></div>
+                <p class="text-xl md:text-2xl text-gray-800 font-semibold mt-6">
+                    Diseñamos estrategias personalizadas para reducir costos logísticos.
+                </p>
+            </div>
+        </div>
+
+        <!-- Zona Inferior con Fondo de Containers -->
+        <div class="relative w-full flex-1 flex flex-col items-center justify-end pb-16 pt-6 sm:pt-10">
+            
+            <!-- Fondo Absoluto desde debajo del título -->
+            <div class="absolute inset-0 z-0">
+                <img src="media/containers.jpg" alt="Fondo Containers" class="w-full h-full object-cover">
+                <!-- Capa semitransparente menos opaca (60%) para que la foto destaque bien -->
+                <div class="absolute inset-0 bg-white/60"></div>
             </div>
 
-            <div class="flex flex-col lg:flex-row items-center gap-10">
-                <!-- Contenedor colgado (img311) -->
-                <div class="lg:w-2/5 flex-shrink-0">
-                    <img src="media/img311.jpg" alt="Contenedor colgado" class="w-full rounded-2xl shadow-xl">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 flex flex-col items-center justify-end flex-1">
+                
+                <!-- Contenedor colgado: Proporcional y con límite para que no se pixele -->
+                <div class="w-[90%] sm:w-full max-w-sm sm:max-w-md md:max-w-xl lg:max-w-2xl xl:max-w-3xl flex-shrink-0 relative z-20">
+                    <img src="media/contenedor_colgado.png" alt="Contenedor colgado"
+                        class="w-full h-auto drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)] object-contain">
                 </div>
 
-                <!-- Lista de beneficios -->
-                <div class="lg:w-3/5">
-                    <div class="bg-brand-navy text-white rounded-2xl p-5 sm:p-8 md:p-10 shadow-2xl relative overflow-hidden">
-                        <i class="fas fa-piggy-bank absolute -bottom-8 -right-8 text-8xl opacity-10 text-brand-blue"></i>
+                <!-- Lista de beneficios - Sube un 15-20% encima del contenedor sin que el relleno sea exagerado -->
+                <div class="w-full lg:w-[85%] xl:w-[80%] -mt-12 sm:-mt-16 md:-mt-24 lg:-mt-32 relative z-10 hover:-translate-y-2 transition-transform duration-500">
+                    <div
+                        class="bg-brand-navy text-white rounded-[2rem] sm:rounded-[2.5rem] px-6 sm:px-10 md:px-14 pb-8 sm:pb-12 md:pb-16 pt-20 sm:pt-24 md:pt-32 lg:pt-40 shadow-[0_30px_60px_rgba(0,27,96,0.5)] relative overflow-hidden border border-white/20">
                         
-                        <ul class="space-y-5 text-lg relative z-10">
+                        <!-- Mapa Fondo Blanco dentro del cuadro -->
+                        <div class="absolute inset-0 pointer-events-none opacity-[0.15]">
+                            <img src="media/Mapw.png" class="w-full h-full object-cover" alt="World Map">
+                        </div>
+
+                        <i class="fas fa-piggy-bank absolute -bottom-10 -right-10 text-9xl opacity-[0.06] text-brand-blue"></i>
+
+                        <ul class="space-y-5 sm:space-y-6 md:space-y-8 text-base sm:text-lg md:text-xl relative z-10">
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-brand-blue mt-1 mr-4 text-xl"></i>
-                                <span>Optimización de rutas comerciales.</span>
+                                <i class="fas fa-check-circle text-brand-blue mt-1 sm:mt-1.5 mr-4 sm:mr-5 text-xl sm:text-2xl md:text-3xl"></i>
+                                <span class="font-medium tracking-wide">Optimización de rutas comerciales.</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-brand-blue mt-1 mr-4 text-xl"></i>
-                                <span>Negociación de tarifas con agentes de carga y navieras.</span>
+                                <i class="fas fa-check-circle text-brand-blue mt-1 sm:mt-1.5 mr-4 sm:mr-5 text-xl sm:text-2xl md:text-3xl"></i>
+                                <span class="font-medium tracking-wide">Negociación de tarifas con agentes de carga y navieras.</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-brand-blue mt-1 mr-4 text-xl"></i>
-                                <span>Identificación de beneficios arancelarios aplicables.</span>
+                                <i class="fas fa-check-circle text-brand-blue mt-1 sm:mt-1.5 mr-4 sm:mr-5 text-xl sm:text-2xl md:text-3xl"></i>
+                                <span class="font-medium tracking-wide">Identificación de beneficios arancelarios aplicables.</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-brand-blue mt-1 mr-4 text-xl"></i>
-                                <span>Reducción de demoras en puerto y costos por almacenamiento.</span>
+                                <i class="fas fa-check-circle text-brand-blue mt-1 sm:mt-1.5 mr-4 sm:mr-5 text-xl sm:text-2xl md:text-3xl"></i>
+                                <span class="font-medium tracking-wide">Reducción de demoras en puerto y costos por almacenamiento.</span>
                             </li>
                         </ul>
 
-                        <div class="mt-8 p-5 bg-brand-blue bg-opacity-20 border border-brand-blue rounded-xl">
-                            <p class="text-center font-bold text-lg md:text-xl text-blue-200">
+                        <div class="mt-8 sm:mt-10 md:mt-12 p-5 sm:p-6 md:p-8 bg-brand-blue bg-opacity-25 border border-brand-blue rounded-2xl relative z-10 backdrop-blur-md">
+                            <p class="text-center font-bold text-lg md:text-xl lg:text-2xl text-blue-50 leading-tight">
                                 Nuestros clientes logran ahorros en costos de fletes marítimos, terrestres y aéreos.
                             </p>
                         </div>
@@ -419,22 +596,24 @@
     </section>
 
     <!-- ==================== PÁGINA 5: TRANSPARENCIA Y HONESTIDAD ==================== -->
-    <section id="transparencia" class="slide-section py-20 bg-brand-light min-h-screen flex flex-col justify-center relative overflow-hidden">
-        <!-- Cajas decorativas -->
-        <img src="media/img429.jpg" alt="" class="deco-box left-0 top-20 w-40 hidden lg:block">
+    <section id="transparencia"
+        class="slide-section py-20 bg-brand-light/85 min-h-screen flex flex-col justify-center relative overflow-hidden">
+        <!-- Cajas decorativas eliminadas -->
 
         <div class="max-w-6xl mx-auto px-6 w-full relative z-10">
             <div class="text-center mb-12">
-                <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">Transparencia y Honestidad</h2>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-brand-navy uppercase tracking-wide">
+                    Transparencia y Honestidad</h2>
                 <div class="w-20 h-1 bg-brand-blue mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <div class="flex flex-col lg:flex-row items-center gap-10">
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
                 <!-- Contenido -->
-                <div class="lg:w-3/5 order-2 lg:order-1">
+                <div class="w-full lg:w-1/2 order-2 lg:order-1">
                     <div class="space-y-6">
                         <!-- Punto 1 -->
-                        <div class="flex items-start gap-5 bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-navy">
+                        <div
+                            class="flex items-start gap-5 bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-navy">
                             <div class="number-circle bg-brand-navy text-white">1</div>
                             <div>
                                 <p class="text-lg md:text-xl text-gray-800 font-medium">
@@ -444,21 +623,25 @@
                         </div>
 
                         <!-- Punto 2 -->
-                        <div class="flex items-start gap-5 bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue">
+                        <div
+                            class="flex items-start gap-5 bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue">
                             <div class="number-circle bg-brand-blue text-white">2</div>
                             <div>
                                 <p class="text-lg md:text-xl text-gray-800 font-medium">
-                                    <strong class="text-brand-navy">Nuestra asesoría no tiene conflicto de intereses.</strong>
+                                    <strong class="text-brand-navy">Nuestra asesoría no tiene conflicto de
+                                        intereses.</strong>
                                 </p>
                             </div>
                         </div>
 
                         <!-- Punto 3 -->
-                        <div class="flex items-start gap-5 bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-navy">
+                        <div
+                            class="flex items-start gap-5 bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-navy">
                             <div class="number-circle bg-brand-navy text-white">3</div>
                             <div>
                                 <p class="text-lg md:text-xl text-gray-800 font-medium">
-                                    <strong class="text-brand-navy">No somos una agencia de carga</strong>, lo que nos permite buscar siempre la mejor opción para tu empresa.
+                                    <strong class="text-brand-navy">No somos una agencia de carga</strong>, lo que nos
+                                    permite buscar siempre la mejor opción para tu empresa.
                                 </p>
                             </div>
                         </div>
@@ -466,79 +649,359 @@
                 </div>
 
                 <!-- Imagen contenedor (img377) -->
-                <div class="lg:w-2/5 order-1 lg:order-2 flex-shrink-0">
-                    <img src="media/img377.jpg" alt="Contenedor" class="w-full max-h-[500px] object-cover rounded-2xl shadow-xl">
+                <div class="w-full lg:w-1/2 order-1 lg:order-2 flex-shrink-0 flex items-center justify-center relative p-4">
+                    <img src="media/innercontainer.png" alt="Contenedor"
+                        class="w-full h-auto drop-shadow-2xl mix-blend-multiply transform lg:scale-110 object-contain">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== PÁGINA 6: CONTACTO ==================== -->
-    <section id="contacto" class="slide-section py-20 bg-brand-navy text-white min-h-screen flex flex-col justify-center relative overflow-hidden">
-        <!-- Decorativo -->
-        <img src="media/img386.jpg" alt="" class="deco-box left-0 bottom-10 w-36 opacity-5 hidden lg:block">
+    <!-- ==================== NUEVA SECCIÓN: SERVICIOS ESPECIALIZADOS (ALIANZAS) ==================== -->
+    <div id="alianzas" class="mt-32 mb-20 w-full relative z-20">
+        <!-- Header Title (Rompiendo contenedor a la izquierda) -->
+        <div class="w-full flex mb-16 relative">
+            <div
+                class="bg-brand-navy text-white py-6 md:py-10 pl-8 md:pl-12 xl:pl-[12vw] pr-10 md:pr-24 rounded-r-3xl md:rounded-r-full shadow-2xl relative -left-4 sm:-left-6 md:-left-8 xl:-left-[12vw]">
+                <div class="border-l-[5px] border-white pl-4 md:pl-8 text-left">
+                    <h2 class="text-2xl sm:text-3xl lg:text-5xl font-extrabold tracking-wide uppercase">
+                        Servicios Especializados</h2>
+                    <p class="text-base md:text-xl lg:text-3xl font-light text-blue-200 mt-2">en alianza
+                        estratégica con...</p>
+                </div>
+            </div>
+        </div>
 
-        <div class="max-w-4xl mx-auto px-6 w-full text-center relative z-10">
-            <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-3 text-white">¡Ponte en contacto!</h2>
-            <div class="w-20 h-1 bg-brand-blue mx-auto mt-3 mb-8 rounded-full"></div>
-            <p class="text-xl text-blue-200 mb-12">Estamos listos para optimizar su cadena de suministro.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-2xl mx-auto">
-                
-                <!-- Guatemala / Latam -->
-                <div class="bg-white/10 backdrop-blur-sm p-5 sm:p-8 rounded-xl border border-white border-opacity-20 hover:bg-white/20 transition duration-300">
-                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-4 border-b border-blue-400 border-opacity-30 pb-3">
-                        <i class="fas fa-globe-americas text-brand-blue mr-2"></i> Guatemala / Latam
-                    </h3>
-                    <div class="mb-5">
-                        <p class="text-lg font-semibold text-brand-blue">Lcda. Mavis Ramos</p>
-                        <p class="text-blue-200 flex items-center mt-2"><a href="https://wa.me/50252927466" target="_blank" class="flex items-center hover:text-green-300 transition"><i class="fab fa-whatsapp w-6 text-green-400"></i> 5292-7466</a></p>
-                        <p class="text-blue-200 flex items-center mt-2"><a href="tel:+50252927466" class="flex items-center hover:text-blue-100 transition"><i class="fas fa-phone w-6"></i> 5292-7466</a></p>
-                        <p class="text-blue-200 flex items-center mt-1 text-sm"><a href="mailto:mavis_oramos@hotmail.com" class="flex items-center hover:text-white transition"><i class="fas fa-envelope w-6"></i> mavis_oramos@hotmail.com</a></p>
+        <div class="max-w-7xl mx-auto px-4 w-full relative z-20">
+            <!-- Logo Cordon Tax -->
+            <div class="text-center flex flex-col items-center mb-24 relative z-20 px-4">
+                <img src="media/cordontaxlogo.jpg" alt="Cordón Tax Logo"
+                    class="h-auto w-auto max-w-full max-h-32 md:max-h-40 lg:max-h-48 object-contain mix-blend-multiply">
+            </div>
+
+            <!-- Grid Cards -->
+            <div class="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8 xl:gap-12 relative z-20 px-1 sm:px-0">
+
+                <!-- Card 1 -->
+                <div class="relative w-full max-w-[360px] mx-auto bg-brand-navy rounded-xl sm:rounded-[2rem] shadow-[0_20px_40px_rgba(0,0,0,0.15)] flex flex-col mt-6 sm:mt-10 transition-transform duration-300 hover:-translate-y-2">
+                    <!-- Icon Top -->
+                    <div class="absolute -top-[20px] md:-top-[45px] left-1/2 -translate-x-1/2 w-[40px] h-[40px] md:w-[90px] md:h-[90px] bg-brand-navy rounded-full flex items-center justify-center z-20 shadow-[0_8px_20px_rgba(0,27,96,0.5)]">
+                        <i class="fas fa-balance-scale text-white text-[1rem] md:text-[2.2rem]"></i>
                     </div>
-                    <div>
-                        <p class="text-lg font-semibold text-brand-blue">David López</p>
-                        <p class="text-blue-200 flex items-center mt-2"><a href="tel:+50242911813" class="flex items-center hover:text-blue-100 transition"><i class="fas fa-phone w-6"></i> 4291-1813</a></p>
-                        <p class="text-blue-200 flex items-center mt-1 text-sm"><a href="mailto:operaciones.morg@gmail.com" class="flex items-center hover:text-white transition"><i class="fas fa-envelope w-6"></i> operaciones.morg@gmail.com</a></p>
+
+                    <!-- Image Area with Notch (Mas vertical aspect-[2/3] o 10/16) -->
+                    <div class="w-full relative aspect-[2/3] rounded-t-xl sm:rounded-t-[2rem] overflow-hidden bg-gray-200"
+                        style="margin-bottom: -15px;">
+                        <img src="media/defensafiscal.jpg"
+                            onerror="this.src='https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800';"
+                            alt="Defensa Fiscal" class="w-full h-full object-cover"
+                            style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(50% + 15px) calc(100% - 15px), 50% 100%, calc(50% - 15px) calc(100% - 15px), 0 calc(100% - 15px));">
+                    </div>
+
+                    <!-- Content Area -->
+                    <div class="px-2 sm:px-4 md:px-8 pb-4 md:pb-10 pt-4 md:pt-10 flex-1 flex flex-col items-start bg-brand-navy rounded-b-xl sm:rounded-b-[2rem] z-10 relative">
+                        <h3 class="text-white font-bold text-[9px] sm:text-xs md:text-[1.3rem] leading-tight md:leading-snug mb-2 md:mb-5 min-h-[30px] md:min-h-[64px] flex items-center tracking-wide">
+                            Defensa y<br>Asesoría Fiscal<br>Integral</h3>
+                        <div class="w-6 md:w-16 h-[2px] bg-white/40 mb-2 md:mb-5"></div>
+                        <p class="text-blue-100/90 text-[7px] sm:text-[10px] md:text-[15px] font-medium leading-tight md:leading-relaxed">Consultoría,
+                            asesoría y defensa fiscal administrativa.</p>
                     </div>
                 </div>
 
-                <!-- China / Asia -->
-                <div class="bg-white/10 backdrop-blur-sm p-5 sm:p-8 rounded-xl border border-white border-opacity-20 hover:bg-white/20 transition duration-300">
-                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-4 border-b border-yellow-400 border-opacity-30 pb-3">
-                        <i class="fas fa-globe-asia text-yellow-400 mr-2"></i> China / Asia
-                    </h3>
-                    <p class="text-lg font-semibold text-yellow-400">Green Link Solutions</p>
-                    <p class="text-lg font-semibold text-white mt-3">Ava Tsang</p>
-                    <p class="text-blue-200 flex items-center mt-2"><a href="tel:+8613113949943" class="flex items-center hover:text-yellow-200 transition"><i class="fas fa-phone w-6 text-yellow-300"></i> +86 13113949943</a></p>
-                    <p class="text-blue-200 flex items-center mt-1 text-sm"><a href="mailto:43791756@qq.com" class="flex items-center hover:text-white transition"><i class="fas fa-envelope w-6"></i> 43791756@qq.com</a></p>
+                <!-- Card 2 -->
+                <div class="relative w-full max-w-[360px] mx-auto bg-brand-navy rounded-xl sm:rounded-[2rem] shadow-[0_20px_40px_rgba(0,0,0,0.15)] flex flex-col mt-6 sm:mt-10 transition-transform duration-300 hover:-translate-y-2">
+                    <!-- Icon Top -->
+                    <div class="absolute -top-[20px] md:-top-[45px] left-1/2 -translate-x-1/2 w-[40px] h-[40px] md:w-[90px] md:h-[90px] bg-brand-navy rounded-full flex items-center justify-center z-20 shadow-[0_8px_20px_rgba(0,27,96,0.5)]">
+                        <i class="fas fa-file-invoice-dollar text-white text-[1rem] md:text-[2.2rem]"></i>
+                    </div>
+
+                    <!-- Image Area with Notch -->
+                    <div class="w-full relative aspect-[2/3] rounded-t-xl sm:rounded-t-[2rem] overflow-hidden bg-gray-200"
+                        style="margin-bottom: -15px;">
+                        <img src="media/tributaria.jpg"
+                            onerror="this.src='https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800';"
+                            alt="Cumplimiento Tributario" class="w-full h-full object-cover"
+                            style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(50% + 15px) calc(100% - 15px), 50% 100%, calc(50% - 15px) calc(100% - 15px), 0 calc(100% - 15px));">
+                    </div>
+
+                    <!-- Content Area -->
+                    <div class="px-2 sm:px-4 md:px-8 pb-4 md:pb-10 pt-4 md:pt-10 flex-1 flex flex-col items-start bg-brand-navy rounded-b-xl sm:rounded-b-[2rem] z-10 relative">
+                        <h3 class="text-white font-bold text-[9px] sm:text-xs md:text-[1.3rem] leading-tight md:leading-snug mb-2 md:mb-5 min-h-[30px] md:min-h-[64px] flex items-center tracking-wide">
+                            Cumplimiento<br>y Planificación<br>Tributaria</h3>
+                        <div class="w-6 md:w-16 h-[2px] bg-white/40 mb-2 md:mb-5"></div>
+                        <p class="text-blue-100/90 text-[7px] sm:text-[10px] md:text-[15px] font-medium leading-tight md:leading-relaxed">Asistencia en
+                            dictámenes y cumplimiento tributario.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="relative w-full max-w-[360px] mx-auto bg-brand-navy rounded-xl sm:rounded-[2rem] shadow-[0_20px_40px_rgba(0,0,0,0.15)] flex flex-col mt-6 sm:mt-10 transition-transform duration-300 hover:-translate-y-2">
+                    <!-- Icon Top -->
+                    <div class="absolute -top-[20px] md:-top-[45px] left-1/2 -translate-x-1/2 w-[40px] h-[40px] md:w-[90px] md:h-[90px] bg-brand-navy rounded-full flex items-center justify-center z-20 shadow-[0_8px_20px_rgba(0,27,96,0.5)]">
+                        <i class="fas fa-chart-line text-white text-[1rem] md:text-[2.2rem]"></i>
+                    </div>
+
+                    <!-- Image Area with Notch -->
+                    <div class="w-full relative aspect-[2/3] rounded-t-xl sm:rounded-t-[2rem] overflow-hidden bg-gray-200"
+                        style="margin-bottom: -15px;">
+                        <img src="media/estrategiacorporativa.jpg"
+                            onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800';"
+                            alt="Estrategia Corporativa" class="w-full h-full object-cover"
+                            style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(50% + 15px) calc(100% - 15px), 50% 100%, calc(50% - 15px) calc(100% - 15px), 0 calc(100% - 15px));">
+                    </div>
+
+                    <!-- Content Area -->
+                    <div class="px-2 sm:px-4 md:px-8 pb-4 md:pb-10 pt-4 md:pt-10 flex-1 flex flex-col items-start bg-brand-navy rounded-b-xl sm:rounded-b-[2rem] z-10 relative">
+                        <h3 class="text-white font-bold text-[9px] sm:text-xs md:text-[1.3rem] leading-tight md:leading-snug mb-2 md:mb-5 min-h-[30px] md:min-h-[64px] flex items-center tracking-wide">
+                            Estrategia<br>Corporativa</h3>
+                        <div class="w-6 md:w-16 h-[2px] bg-white/40 mb-2 md:mb-5"></div>
+                        <p class="text-blue-100/90 text-[7px] sm:text-[10px] md:text-[15px] font-medium leading-tight md:leading-relaxed">Acompañamiento
+                            estratégico empresarial.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PÁGINA 6: CONTACTO ==================== -->
+    <section id="contacto"
+        class="slide-section py-20 bg-[#f4f4f4]/85 min-h-screen flex flex-col justify-center relative overflow-hidden">
+        <!-- Decorativo eliminado -->
+
+        <div class="max-w-6xl mx-auto px-4 w-full relative z-10">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-3 text-brand-navy">¡Ponte en contacto!
+                </h2>
+                <div class="w-20 h-1 bg-brand-blue mx-auto mt-3 mb-6 rounded-full"></div>
+                <p class="text-xl text-gray-600 mb-12">Estamos listos para optimizar su cadena de suministro.</p>
+            </div>
+
+            <!-- Mavis Ramos (Main Contact - Faithful to Image) -->
+            <div class="flex flex-col items-center justify-center mb-16 relative z-20 w-full max-w-2xl mx-auto">
+                <h3
+                    class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-10 w-full text-center tracking-tighter">
+                    Asesoria Logística</h3>
+
+                <!-- Pill Card -->
+                <div
+                    class="flex rounded-3xl overflow-hidden shadow-2xl mb-4 w-full transition-transform hover:scale-105 duration-300 border border-white/20">
+                    <!-- Left (Dark) -->
+                    <div
+                        class="bg-[#001746] w-[40%] flex items-stretch justify-center relative shadow-[5px_0_15px_rgba(0,0,0,0.5)] z-10 p-0 border-r border-[#001746]">
+                        <img src="media/morglogo.png" alt="Morg Logo" class="w-full h-full object-contain scale-[1.15]">
+                    </div>
+                    <!-- Right (Light) -->
+                    <div class="bg-[#0066cc] py-5 px-4 w-[60%] flex gap-3 items-center">
+                        <a href="https://wa.me/50252927466" target="_blank" rel="noopener noreferrer" class="rounded-full w-12 h-12 flex items-center justify-center shrink-0 hover:scale-110 transition-transform cursor-pointer">
+                            <i class="fab fa-whatsapp text-3xl text-white"></i>
+                        </a>
+                        <div class="flex flex-col text-white text-left">
+                            <span class="text-sm md:text-base font-medium tracking-wide">Mavis Ramos</span>
+                            <a href="tel:+50252927466"
+                                class="text-xl md:text-3xl font-bold tracking-wider leading-none mt-1 hover:text-blue-200 transition-colors">5292-7466</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Links below -->
+                <div
+                    class="flex flex-col gap-5 text-[#001746] font-semibold text-lg md:text-2xl w-full max-w-sm mx-auto md:ml-20">
+                    <div class="flex items-center gap-4 group cursor-pointer w-fit">
+                        <div
+                            class="bg-[#0066cc] rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-white shrink-0 group-hover:bg-[#001746] transition-colors">
+                            <i class="fas fa-arrow-right text-xl"></i>
+                        </div>
+                        <a href="mailto:mavis_oramos@hotmail.com"
+                            class="group-hover:text-white transition-colors">mavis_oramos@hotmail.com</a>
+                    </div>
+                    <!-- Agregamos el correo de org.broker siguiendo el mismo estilo visual -->
+                    <div class="flex items-center gap-4 group cursor-pointer w-fit">
+                        <div
+                            class="bg-[#0066cc] rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-white shrink-0 group-hover:bg-[#001746] transition-colors">
+                            <i class="fas fa-arrow-right text-xl"></i>
+                        </div>
+                        <a href="mailto:mavis@morg.broker"
+                            class="group-hover:text-white transition-colors">mavis@morg.broker</a>
+                    </div>
+                    <div class="flex items-center gap-4 group cursor-pointer w-fit">
+                        <div
+                            class="bg-[#0066cc] rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-white shrink-0 group-hover:bg-[#001746] transition-colors">
+                            <i class="fas fa-globe text-xl"></i>
+                        </div>
+                        <a href="http://www.morg.broker"
+                            class="group-hover:text-white transition-colors">www.morg.broker</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Botón WhatsApp -->
-            <div class="mt-14 no-print">
-                <a href="https://wa.me/50252927466" target="_blank" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-brand-blue rounded-full hover:bg-blue-600 transition shadow-lg hover:shadow-xl">
-                    <i class="fab fa-whatsapp text-2xl mr-3"></i> Chatear por WhatsApp
-                </a>
+            <!-- THE FAITHFUL BANNER (Reconstructed from Image) -->
+            <div class="w-full bg-[#f4f4f4] py-8 rounded-xl relative z-10 mt-8">
+                <!-- Logos -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center mb-6 px-4">
+                    <!-- GreenLink Logo -->
+                    <div class="text-center flex flex-col items-center">
+                        <h3 class="text-4xl font-black text-[#1c7b39] flex items-center gap-2"><span
+                                class="italic font-sans">GS</span>
+                            <div class="text-left leading-tight pl-2 border-l border-[#1c7b39]"><span
+                                    class="text-base font-extrabold block">GREENLINK</span><span
+                                    class="text-[9px] font-semibold block">SOLUTIONS TRADING</span></div>
+                        </h3>
+                    </div>
+                    <!-- Morg Logo -->
+                    <div class="px-2">
+                        <img src="media/morglogow.png" alt="Morg Logo" class="h-auto w-auto max-w-full max-h-24 md:max-h-32 object-contain">
+                    </div>
+                    <!-- Cordon Tax Logo -->
+                    <div class="text-center flex flex-col items-center px-2">
+                        <img src="media/cordontaxlogo.jpg" alt="Cordón Tax Logo"
+                            class="h-auto w-auto max-w-full max-h-24 md:max-h-32 object-contain mix-blend-multiply">
+                    </div>
+                </div>
+
+                <!-- Línea separadora -->
+                <hr class="border-t-2 border-brand-navy mb-8 mx-2">
+
+                <!-- Info de contactos (3 columnas) -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-0 text-brand-navy">
+                    <!-- Columna 1: Ava -->
+                    <div class="flex flex-col px-2 md:px-6 xl:px-8 lg:border-r-2 border-brand-navy">
+                        <div class="flex items-center gap-3 xl:gap-4 mb-3">
+                            <i class="fas fa-user text-2xl text-[#005cb3] shrink-0"></i>
+                            <span class="text-lg xl:text-xl font-medium text-gray-700">Ava Tsang</span>
+                        </div>
+                        <div class="flex items-center gap-3 xl:gap-4 mb-3">
+                            <i class="fas fa-phone-alt text-2xl text-[#005cb3] shrink-0"></i>
+                            <a href="tel:+8613113949943"
+                                class="text-xl md:text-2xl xl:text-3xl font-extrabold tracking-tight text-brand-navy break-words">+86
+                                13113949943</a>
+                        </div>
+                        <div class="flex items-start gap-3 xl:gap-4">
+                            <i class="fas fa-envelope text-xl text-[#005cb3] mt-1 shrink-0"></i>
+                            <a href="mailto:ava@greenlinkst.com"
+                                class="text-base xl:text-lg text-gray-700 font-medium break-all sm:break-normal">ava@greenlinkst.com</a>
+                        </div>
+                    </div>
+
+                    <!-- Columna 2: Daniel & Melanie -->
+                    <div class="flex flex-col px-2 md:px-6 xl:px-8 lg:border-r-2 border-brand-navy">
+                        <div
+                            class="grid grid-cols-[auto_1fr] gap-x-3 xl:gap-x-4 gap-y-2 sm:gap-y-3 w-fit mx-auto lg:mx-0 xl:mx-auto">
+                            <!-- Teléfonos y Nombres -->
+                            <div class="flex justify-center items-end pb-1">
+                                <i class="fas fa-phone-alt text-2xl sm:text-[1.75rem] text-[#005cb3]"></i>
+                            </div>
+
+                            <div class="flex items-end pb-1">
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-medium text-gray-500 mb-1">Daniel López</span>
+                                    <span
+                                        class="text-xl md:text-2xl xl:text-[2.1rem] font-extrabold tracking-tight text-brand-navy leading-none">4294-1813</span>
+                                </div>
+                                <span
+                                    class="text-lg md:text-xl xl:text-2xl font-medium mx-1 sm:mx-2 xl:mx-3 text-brand-navy pb-0.5 text-center">/</span>
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-medium text-gray-500 mb-1 md:pl-1">Melanie
+                                        Cordón</span>
+                                    <span
+                                        class="text-xl md:text-2xl xl:text-[2.1rem] font-extrabold tracking-tight text-brand-navy leading-none">5966-4415</span>
+                                </div>
+                            </div>
+
+                            <!-- Correo 1 -->
+                            <div class="flex justify-center items-center mt-1">
+                                <i class="fas fa-envelope text-xl sm:text-2xl text-[#005cb3]"></i>
+                            </div>
+                            <div class="flex items-center mt-1">
+                                <a href="mailto:sales@morg.broker"
+                                    class="text-base sm:text-lg xl:text-xl text-gray-700 font-medium hover:text-brand-blue transition-colors break-all sm:break-normal">sales@morg.broker</a>
+                            </div>
+
+                            <!-- Correo 2 -->
+                            <div class="flex justify-center items-center">
+                                <i class="fas fa-envelope text-xl sm:text-2xl text-[#005cb3]"></i>
+                            </div>
+                            <div class="flex items-center">
+                                <a href="mailto:operaciones@morg.broker"
+                                    class="text-base sm:text-lg xl:text-xl text-gray-700 font-medium hover:text-brand-blue transition-colors break-all sm:break-normal">operaciones@morg.broker</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Columna 3: Dr. Luis -->
+                    <div class="flex flex-col px-2 md:px-6 xl:px-8">
+                        <div class="flex items-center gap-3 xl:gap-4 mb-3">
+                            <i class="fas fa-user text-2xl text-[#005cb3] shrink-0"></i>
+                            <span class="text-lg xl:text-xl font-medium text-gray-700">Dr. Luis Fernando
+                                Cordón</span>
+                        </div>
+                        <div class="flex items-start gap-3 xl:gap-4">
+                            <i class="fas fa-envelope text-xl text-[#005cb3] mt-1 shrink-0"></i>
+                            <a href="mailto:luisfercordon@gmail.com"
+                                class="text-base xl:text-lg text-gray-700 font-medium break-all sm:break-normal">luisfercordon@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Logo en footer -->
-            <div class="mt-12 opacity-60">
-                <img src="media/img379.jpg" alt="Morg Logo" class="h-12 w-auto mx-auto rounded opacity-90">
+            <div class="mt-20 opacity-60 text-center px-4 w-full flex flex-col items-center">
+                <img src="media/morglogow.png" alt="Morg Logo"
+                    class="h-auto w-auto max-w-full max-h-20 md:max-h-24 mx-auto opacity-90 mb-4 object-contain drop-shadow-md">
+                <p class="text-sm text-gray-500 font-medium"><a href="http://www.morg.broker"
+                        class="hover:text-brand-blue transition">www.morg.broker</a></p>
+            </div>
+            
+            <!-- Derechos y Desarrollador -->
+            <div class="mt-12 mb-6 text-center px-4 w-full flex flex-col items-center gap-2">
+                <p class="text-xs md:text-sm text-gray-500 font-medium">&copy; 2026 morg.broker. Todos los derechos reservados.</p>
+                <p class="text-xs text-gray-400">Desarrollado por <a href="#" class="font-bold text-brand-navy hover:text-brand-blue transition-colors">crgm.app</a></p>
             </div>
         </div>
     </section>
 
     <!-- ==================== BOTÓN FLOTANTE WHATSAPP ==================== -->
     <div class="fixed bottom-6 right-6 z-50 no-print flex flex-col items-end group">
-        <div class="bg-white text-gray-800 text-sm py-1 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mb-2 font-semibold border border-gray-100">
+        <div
+            class="bg-white text-gray-800 text-sm py-1 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mb-2 font-semibold border border-gray-100">
             ¡Escríbenos!
         </div>
-        <a href="https://wa.me/50252927466" target="_blank" rel="noopener noreferrer" class="relative bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform duration-300">
+        <a href="https://wa.me/50252927466" target="_blank" rel="noopener noreferrer"
+            class="relative bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform duration-300">
             <i class="fab fa-whatsapp text-4xl relative z-10"></i>
             <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-40"></span>
         </a>
     </div>
 
+    <script>
+        // Efecto Panorámico (Pan-scroll) para el fondo de Portada en Móviles
+        document.addEventListener('scroll', () => {
+            if (window.innerWidth < 1024) { // Actuar solo en móvil/tablet
+                const heroSection = document.getElementById('inicio');
+                const heroBg = document.getElementById('hero-bg');
+                
+                if (heroSection && heroBg) {
+                    const scrollY = window.scrollY;
+                    const sectionHeight = heroSection.offsetHeight;
+                    
+                    // Ratio de scroll actual (0 a 1)
+                    let scrollPercent = scrollY / sectionHeight;
+                    if (scrollPercent > 1) scrollPercent = 1;
+                    if (scrollPercent < 0) scrollPercent = 0;
+                    
+                    // Inicia desde el centro (50%) y avanza hacia un lado (ej. 5%)
+                    // Esto desplaza la foto físicamente a la derecha.
+                    const startPos = 50;
+                    const endPos = 5; 
+                    const currentPos = startPos + (scrollPercent * (endPos - startPos));
+                    
+                    heroBg.style.objectPosition = `${currentPos}% top`;
+                }
+            } else {
+                // Restaurar anclaje de escritorio al centro
+                const heroBg = document.getElementById('hero-bg');
+                if (heroBg) heroBg.style.objectPosition = `50% top`;
+            }
+        });
+    </script>
 </body>
 </html>
