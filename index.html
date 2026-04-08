@@ -39,6 +39,7 @@
     <style>
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 100px;
         }
 
         body {
@@ -261,10 +262,10 @@
                         onclick="document.getElementById('mobileMenu').classList.remove('open')">Nosotros</a>
                     <a href="#servicios" class="hover:text-brand-blue transition py-1"
                         onclick="document.getElementById('mobileMenu').classList.remove('open')">Servicios</a>
+                    <a href="#alianzas" class="hover:text-brand-blue transition py-1"
+                        onclick="document.getElementById('mobileMenu').classList.remove('open')">Alianzas</a>
                     <a href="#ahorro" class="hover:text-brand-blue transition py-1"
                         onclick="document.getElementById('mobileMenu').classList.remove('open')">Ahorro</a>
-                    <a href="#transparencia" class="hover:text-brand-blue transition py-1"
-                        onclick="document.getElementById('mobileMenu').classList.remove('open')">Transparencia</a>
                     <a href="#contacto" class="hover:text-brand-blue transition py-1"
                         onclick="document.getElementById('mobileMenu').classList.remove('open')">Contacto</a>
                 </div>
@@ -333,10 +334,16 @@
                             </div>
                             <!-- Right (Light) -->
                             <div class="bg-[#0066cc] py-5 px-3 sm:px-5 w-[60%] flex gap-2 sm:gap-4 items-center">
-                                <a href="https://wa.me/50252927466" target="_blank" rel="noopener noreferrer"
-                                    class="rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shrink-0 hover:scale-110 transition-transform cursor-pointer bg-white/10">
-                                    <i class="fab fa-whatsapp text-2xl sm:text-3xl text-white"></i>
-                                </a>
+                                <div class="flex flex-col gap-1 shrink-0">
+                                    <a href="https://wa.me/50252927466" target="_blank" rel="noopener noreferrer"
+                                        class="rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:scale-110 transition-transform cursor-pointer bg-white/10">
+                                        <i class="fab fa-whatsapp text-2xl sm:text-3xl text-white"></i>
+                                    </a>
+                                    <a href="tel:+50252927466"
+                                        class="rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:scale-110 transition-transform cursor-pointer bg-white/20">
+                                        <i class="fas fa-phone text-xl sm:text-2xl text-white"></i>
+                                    </a>
+                                </div>
                                 <div class="flex flex-col text-white text-left">
                                     <span class="text-xs sm:text-sm md:text-base font-medium tracking-wide">Mavis
                                         Ramos</span>
@@ -715,7 +722,7 @@
     </section>
 
     <!-- ==================== PÁGINA 4 y 5: AHORRO EN COSTOS Y TRANSPARENCIA ==================== -->
-    <section id="ahorro" class="slide-section flex flex-col relative overflow-hidden bg-white">
+    <section id="ahorro" class="slide-section flex flex-col relative overflow-hidden bg-white" style="scroll-margin-top: -500px;">
 
         <!-- Fondo Absoluto Superior: Containers image -->
         <div class="absolute top-0 left-0 w-full h-[80vh] md:h-[120vh] z-0">
@@ -1144,16 +1151,21 @@
         </div>
     </section>
 
-    <!-- ==================== BOTÓN FLOTANTE WHATSAPP ==================== -->
-    <div class="fixed bottom-6 right-6 z-50 no-print flex flex-col items-end group">
+    <!-- ==================== BOTÓN FLOTANTE WHATSAPP Y TELÉFONO ==================== -->
+    <div class="fixed bottom-6 right-6 z-50 no-print flex flex-col items-end gap-4 group">
         <div
-            class="bg-white text-gray-800 text-sm py-1 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mb-2 font-semibold border border-gray-100">
-            ¡Escríbenos!
+            class="bg-white text-gray-800 text-sm py-1 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none font-semibold border border-gray-100">
+            ¡Contáctanos!
         </div>
         <a href="https://wa.me/50252927466" target="_blank" rel="noopener noreferrer"
             class="relative bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform duration-300">
             <i class="fab fa-whatsapp text-4xl relative z-10"></i>
             <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-40"></span>
+        </a>
+        <a href="tel:50252927466"
+            class="relative bg-blue-500 hover:bg-blue-700 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(59,130,246,0.4)] hover:scale-110 transition-transform duration-300">
+            <i class="fas fa-phone text-4xl relative z-10"></i>
+            <span class="absolute inset-0 rounded-full bg-blue-500 animate-ping opacity-40"></span>
         </a>
     </div>
 
