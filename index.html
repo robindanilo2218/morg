@@ -1146,17 +1146,31 @@
         </div>
     </section>
 
-    <!-- ==================== BOTÓN FLOTANTE WHATSAPP ==================== -->
-    <div class="fixed bottom-6 right-6 z-50 no-print flex flex-col items-end group">
-        <div
-            class="bg-white text-gray-800 text-sm py-1 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mb-2 font-semibold border border-gray-100">
-            ¡Escríbenos!
+    <!-- ==================== BOTONES FLOTANTES WHATSAPP + LLAMADA ==================== -->
+    <div class="fixed bottom-6 right-6 z-50 no-print flex flex-col items-end gap-3">
+        <!-- WhatsApp -->
+        <div class="flex flex-col items-end group">
+            <div
+                class="bg-white text-gray-800 text-sm py-1 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mb-2 font-semibold border border-gray-100">
+                ¡Escríbenos!
+            </div>
+            <a href="https://wa.me/50266694434" target="_blank" rel="noopener noreferrer"
+                class="relative bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform duration-300">
+                <i class="fab fa-whatsapp text-4xl relative z-10"></i>
+                <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-40"></span>
+            </a>
         </div>
-        <a href="https://wa.me/50266694434" target="_blank" rel="noopener noreferrer"
-            class="relative bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform duration-300">
-            <i class="fab fa-whatsapp text-4xl relative z-10"></i>
-            <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-40"></span>
-        </a>
+        <!-- Llamada -->
+        <div class="flex flex-col items-end group">
+            <div
+                class="bg-white text-gray-800 text-sm py-1 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mb-2 font-semibold border border-gray-100">
+                ¡Llámanos!
+            </div>
+            <a href="tel:+50266694434"
+                class="bg-[#0066cc] hover:bg-[#001746] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(0,102,204,0.4)] hover:scale-110 transition-transform duration-300">
+                <i class="fas fa-phone text-3xl"></i>
+            </a>
+        </div>
     </div>
 
     <script>
