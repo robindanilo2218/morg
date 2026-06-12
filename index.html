@@ -39,7 +39,6 @@
     <style>
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 100px;
         }
 
         body {
@@ -262,8 +261,6 @@
                         onclick="document.getElementById('mobileMenu').classList.remove('open')">Nosotros</a>
                     <a href="#servicios" class="hover:text-brand-blue transition py-1"
                         onclick="document.getElementById('mobileMenu').classList.remove('open')">Servicios</a>
-                    <a href="#alianzas" class="hover:text-brand-blue transition py-1"
-                        onclick="document.getElementById('mobileMenu').classList.remove('open')">Alianzas</a>
                     <a href="#ahorro" class="hover:text-brand-blue transition py-1"
                         onclick="document.getElementById('mobileMenu').classList.remove('open')">Ahorro</a>
                     <a href="#contacto" class="hover:text-brand-blue transition py-1"
@@ -328,27 +325,22 @@
                             class="flex rounded-[2rem] overflow-hidden shadow-2xl mb-5 w-full transition-transform hover:scale-105 duration-300 border border-white/20">
                             <!-- Left (Dark) -->
                             <div
-                                class="bg-[#001746] w-[40%] flex items-stretch justify-center relative shadow-[5px_0_15px_rgba(0,0,0,0.5)] z-10 p-0 border-r border-[#001746]">
+                                class="bg-[#001746] w-[40%] flex items-stretch justify-center relative shadow-[5px_0_15px_rgba(0,0,0,0.5)] z-10 border-r border-[#001746]">
                                 <img src="media/morglogo.png" alt="Morg Logo"
-                                    class="w-full h-full object-contain scale-[1.20]">
+                                    class="w-full h-full object-cover">
                             </div>
                             <!-- Right (Light) -->
                             <div class="bg-[#0066cc] py-5 px-3 sm:px-5 w-[60%] flex gap-2 sm:gap-4 items-center">
-                                <div class="flex flex-col gap-1 shrink-0">
-                                    <a href="https://wa.me/50252927466" target="_blank" rel="noopener noreferrer"
-                                        class="rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:scale-110 transition-transform cursor-pointer bg-white/10">
-                                        <i class="fab fa-whatsapp text-2xl sm:text-3xl text-white"></i>
-                                    </a>
-                                    <a href="tel:+50252927466"
-                                        class="rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:scale-110 transition-transform cursor-pointer bg-white/20">
-                                        <i class="fas fa-phone text-xl sm:text-2xl text-white"></i>
-                                    </a>
-                                </div>
+                                <a href="https://wa.me/50266694434" target="_blank" rel="noopener noreferrer"
+                                    class="rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shrink-0 hover:scale-110 transition-transform cursor-pointer bg-white/10">
+                                    <i class="fab fa-whatsapp text-2xl sm:text-3xl text-white"></i>
+                                </a>
                                 <div class="flex flex-col text-white text-left">
-                                    <span class="text-xs sm:text-sm md:text-base font-medium tracking-wide">Mavis
-                                        Ramos</span>
+                                    <span class="text-xs sm:text-sm md:text-base font-medium tracking-wide">Mavis Ramos</span>
+                                    <a href="tel:+50266694434"
+                                        class="text-base sm:text-lg md:text-xl font-bold tracking-wide leading-tight mt-1 hover:text-blue-200 transition-colors">+502 6669-4434</a>
                                     <a href="tel:+50252927466"
-                                        class="text-lg sm:text-2xl md:text-3xl font-bold tracking-wider leading-none mt-1 hover:text-blue-200 transition-colors">5292-7466</a>
+                                        class="text-xs sm:text-sm font-normal tracking-wider leading-none mt-1 hover:text-blue-200 transition-colors text-white/70">5292-7466</a>
                                 </div>
                             </div>
                         </div>
@@ -722,7 +714,7 @@
     </section>
 
     <!-- ==================== PÁGINA 4 y 5: AHORRO EN COSTOS Y TRANSPARENCIA ==================== -->
-    <section id="ahorro" class="slide-section flex flex-col relative overflow-hidden bg-white" style="scroll-margin-top: -500px;">
+    <section id="ahorro" class="slide-section flex flex-col relative overflow-hidden bg-white">
 
         <!-- Fondo Absoluto Superior: Containers image -->
         <div class="absolute top-0 left-0 w-full h-[80vh] md:h-[120vh] z-0">
@@ -979,19 +971,21 @@
                     class="flex rounded-3xl overflow-hidden shadow-2xl mb-4 w-full transition-transform hover:scale-105 duration-300 border border-white/20">
                     <!-- Left (Dark) -->
                     <div
-                        class="bg-[#001746] w-[40%] flex items-stretch justify-center relative shadow-[5px_0_15px_rgba(0,0,0,0.5)] z-10 p-0 border-r border-[#001746]">
-                        <img src="media/morglogo.png" alt="Morg Logo" class="w-full h-full object-contain scale-[1.15]">
+                        class="bg-[#001746] w-[40%] flex items-stretch justify-center relative shadow-[5px_0_15px_rgba(0,0,0,0.5)] z-10 border-r border-[#001746]">
+                        <img src="media/morglogo.png" alt="Morg Logo" class="w-full h-full object-cover">
                     </div>
                     <!-- Right (Light) -->
                     <div class="bg-[#0066cc] py-5 px-4 w-[60%] flex gap-3 items-center">
-                        <a href="https://wa.me/50252927466" target="_blank" rel="noopener noreferrer"
+                        <a href="https://wa.me/50266694434" target="_blank" rel="noopener noreferrer"
                             class="rounded-full w-12 h-12 flex items-center justify-center shrink-0 hover:scale-110 transition-transform cursor-pointer">
                             <i class="fab fa-whatsapp text-3xl text-white"></i>
                         </a>
                         <div class="flex flex-col text-white text-left">
                             <span class="text-sm md:text-base font-medium tracking-wide">Mavis Ramos</span>
+                            <a href="tel:+50266694434"
+                                class="text-base md:text-xl font-bold tracking-wide leading-tight mt-1 hover:text-blue-200 transition-colors">+502 6669-4434</a>
                             <a href="tel:+50252927466"
-                                class="text-xl md:text-3xl font-bold tracking-wider leading-none mt-1 hover:text-blue-200 transition-colors">5292-7466</a>
+                                class="text-xs md:text-sm font-normal tracking-wider leading-none mt-1 hover:text-blue-200 transition-colors text-white/70">5292-7466</a>
                         </div>
                     </div>
                 </div>
@@ -1072,30 +1066,10 @@
                         </div>
                     </div>
 
-                    <!-- Columna 2: Daniel & Melanie -->
+                    <!-- Columna 2: Correos -->
                     <div class="flex flex-col px-2 md:px-6 xl:px-8 lg:border-r-2 border-brand-navy">
                         <div
                             class="grid grid-cols-[auto_1fr] gap-x-3 xl:gap-x-4 gap-y-2 sm:gap-y-3 w-fit mx-auto lg:mx-0 xl:mx-auto">
-                            <!-- Teléfonos y Nombres -->
-                            <div class="flex justify-center items-end pb-1">
-                                <i class="fas fa-phone-alt text-2xl sm:text-[1.75rem] text-[#005cb3]"></i>
-                            </div>
-
-                            <div class="flex items-end pb-1">
-                                <div class="flex flex-col">
-                                    <span class="text-sm font-medium text-gray-500 mb-1">Daniel López</span>
-                                    <span
-                                        class="text-xl md:text-2xl xl:text-[2.1rem] font-extrabold tracking-tight text-brand-navy leading-none">4294-1813</span>
-                                </div>
-                                <span
-                                    class="text-lg md:text-xl xl:text-2xl font-medium mx-1 sm:mx-2 xl:mx-3 text-brand-navy pb-0.5 text-center">/</span>
-                                <div class="flex flex-col">
-                                    <span class="text-sm font-medium text-gray-500 mb-1 md:pl-1">Melanie
-                                        Cordón</span>
-                                    <span
-                                        class="text-xl md:text-2xl xl:text-[2.1rem] font-extrabold tracking-tight text-brand-navy leading-none">5966-4415</span>
-                                </div>
-                            </div>
 
                             <!-- Correo 1 -->
                             <div class="flex justify-center items-center mt-1">
@@ -1151,21 +1125,16 @@
         </div>
     </section>
 
-    <!-- ==================== BOTÓN FLOTANTE WHATSAPP Y TELÉFONO ==================== -->
-    <div class="fixed bottom-6 right-6 z-50 no-print flex flex-col items-end gap-4 group">
+    <!-- ==================== BOTÓN FLOTANTE WHATSAPP ==================== -->
+    <div class="fixed bottom-6 right-6 z-50 no-print flex flex-col items-end group">
         <div
-            class="bg-white text-gray-800 text-sm py-1 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none font-semibold border border-gray-100">
-            ¡Contáctanos!
+            class="bg-white text-gray-800 text-sm py-1 px-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mb-2 font-semibold border border-gray-100">
+            ¡Escríbenos!
         </div>
-        <a href="https://wa.me/50252927466" target="_blank" rel="noopener noreferrer"
+        <a href="https://wa.me/50266694434" target="_blank" rel="noopener noreferrer"
             class="relative bg-[#25D366] hover:bg-[#128C7E] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform duration-300">
             <i class="fab fa-whatsapp text-4xl relative z-10"></i>
             <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-40"></span>
-        </a>
-        <a href="tel:50252927466"
-            class="relative bg-blue-500 hover:bg-blue-700 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(59,130,246,0.4)] hover:scale-110 transition-transform duration-300">
-            <i class="fas fa-phone text-4xl relative z-10"></i>
-            <span class="absolute inset-0 rounded-full bg-blue-500 animate-ping opacity-40"></span>
         </a>
     </div>
 
