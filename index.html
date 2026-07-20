@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morg & Green Link - Asesoría Logística</title>
+    <title>Morg — Asesoría Logística</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -230,15 +230,23 @@
                 <a href="#inicio" class="flex items-center gap-3">
                     <img src="media/morglogowr.png" alt="Morg Logo"
                         class="h-10 w-auto max-w-full object-contain rounded">
-                    <span class="font-bold text-lg tracking-wide">Morg & Green Link</span>
+                    <span class="font-bold text-lg tracking-wide">Morg</span>
                 </a>
-                <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <div class="hidden md:flex items-center space-x-5 text-sm font-medium">
                     <a href="#inicio" class="hover:text-brand-blue transition-colors duration-200">Inicio</a>
                     <a href="#quienes-somos" class="hover:text-brand-blue transition-colors duration-200">Nosotros</a>
                     <a href="#servicios" class="hover:text-brand-blue transition-colors duration-200">Servicios</a>
-                    <a href="#alianzas" class="hover:text-brand-blue transition-colors duration-200">Alianzas</a>
                     <a href="#ahorro" class="hover:text-brand-blue transition-colors duration-200">Ahorro</a>
                     <a href="#contacto" class="hover:text-brand-blue transition-colors duration-200">Contacto</a>
+                    <span class="text-white/30">|</span>
+                    <a href="https://hashchat.app" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/20 px-3 py-1.5 rounded-full transition-all duration-200 text-white text-xs font-semibold">
+                        <span>💬</span> HashChat
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center gap-1.5 bg-amber-500/80 hover:bg-amber-400 border border-amber-400/50 px-3 py-1.5 rounded-full transition-all duration-200 text-white text-xs font-semibold">
+                        <span>📦</span> Zarpa
+                    </a>
                 </div>
                 <div class="flex items-center gap-3">
                     <a href="/pdf/" target="_blank"
@@ -265,6 +273,18 @@
                         onclick="document.getElementById('mobileMenu').classList.remove('open')">Ahorro</a>
                     <a href="#contacto" class="hover:text-brand-blue transition py-1"
                         onclick="document.getElementById('mobileMenu').classList.remove('open')">Contacto</a>
+                    <div class="pt-2 border-t border-white/10 flex flex-col gap-2">
+                        <a href="https://hashchat.app" target="_blank" rel="noopener noreferrer"
+                            class="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-2 rounded-lg text-white font-semibold text-sm w-fit"
+                            onclick="document.getElementById('mobileMenu').classList.remove('open')">
+                            💬 HashChat
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"
+                            class="flex items-center gap-2 bg-amber-500/80 hover:bg-amber-400 px-3 py-2 rounded-lg text-white font-semibold text-sm w-fit"
+                            onclick="document.getElementById('mobileMenu').classList.remove('open')">
+                            📦 Zarpa
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -314,10 +334,7 @@
 
                     <div class="w-24 h-1 bg-brand-blue my-6 rounded-full animate-fade-up delay-200"></div>
 
-                    <h2
-                        class="text-lg sm:text-2xl md:text-3xl font-bold text-white mb-10 animate-fade-up delay-300 tracking-wide">
-                        GREEN LINK <span class="font-light text-blue-300">SOLUTIONS TRADING</span>
-                    </h2>
+
 
                     <!-- Mavis Ramos Card (Hero) -->
                     <div class="animate-fade-up delay-400 w-full max-w-[22rem] sm:max-w-md lg:max-w-lg mx-auto lg:mx-0">
@@ -370,18 +387,6 @@
                             </div>
                         </div>
 
-                        <!-- Logos de alianzas -->
-                        <div
-                            class="bg-white/70 rounded-lg py-4 mt-8 flex items-center justify-center lg:justify-start gap-3 sm:gap-4 w-full px-2 mb-2">
-                            <div class="flex-1 flex items-center justify-center">
-                                <img src="media/greenlinklogo.svg" alt="Green Link Logo"
-                                    class="w-full max-h-7 sm:max-h-8 md:max-h-9 object-contain drop-shadow-md hover:scale-105 transition-transform">
-                            </div>
-                            <div class="flex-1 flex items-center justify-center">
-                                <img src="media/cordon.svg" alt="Cordón Tax Logo"
-                                    class="w-full max-h-11 sm:max-h-13 md:max-h-[3.8rem] object-contain drop-shadow-md hover:scale-105 transition-transform">
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -1042,91 +1047,7 @@
                 </div>
             </div>
 
-            <!-- THE FAITHFUL BANNER (Reconstructed from Image) -->
-            <div class="w-full bg-[#f4f4f4] py-8 rounded-xl relative z-10 mt-8">
-                <!-- Logos -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center mb-6 px-4">
-                    <!-- GreenLink Logo -->
-                    <div class="text-center flex flex-col items-center px-2 w-full">
-                        <img src="media/greenlinklogo.svg" alt="Green Link Solutions Trading Logo"
-                            class="w-full max-w-[180px] sm:max-w-[240px] md:max-w-[400px] h-auto object-contain">
-                    </div>
-                    <!-- Morg Logo -->
-                    <div class="px-2 flex items-center justify-center">
-                        <img src="media/morglogow.png" alt="Morg Logo"
-                            class="h-auto w-auto max-w-full max-h-32 md:max-h-44 object-contain">
-                    </div>
-                    <!-- Cordon Tax Logo -->
-                    <div class="text-center flex flex-col items-center px-2">
-                        <img src="media/cordon.svg" alt="Cordón Tax Logo"
-                            class="w-full max-w-[180px] sm:max-w-[240px] md:max-w-[300px] h-auto object-contain">
-                    </div>
-                </div>
 
-                <!-- Línea separadora -->
-                <hr class="border-t-2 border-brand-navy mb-8 mx-2">
-
-                <!-- Info de contactos (3 columnas) -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-0 text-brand-navy">
-                    <!-- Columna 1: Ava -->
-                    <div class="flex flex-col px-2 md:px-6 xl:px-8 lg:border-r-2 border-brand-navy">
-                        <div class="flex items-center gap-3 xl:gap-4 mb-3">
-                            <i class="fas fa-user text-2xl text-[#005cb3] shrink-0"></i>
-                            <span class="text-lg xl:text-xl font-medium text-gray-700">Ava Tsang</span>
-                        </div>
-                        <div class="flex items-center gap-3 xl:gap-4 mb-3">
-                            <i class="fas fa-phone-alt text-2xl text-[#005cb3] shrink-0"></i>
-                            <a href="tel:+8613113949943"
-                                class="text-xl md:text-2xl xl:text-3xl font-extrabold tracking-tight text-brand-navy break-words">+86
-                                13113949943</a>
-                        </div>
-                        <div class="flex items-start gap-3 xl:gap-4">
-                            <i class="fas fa-envelope text-xl text-[#005cb3] mt-1 shrink-0"></i>
-                            <a href="mailto:ava@greenlinkst.com"
-                                class="text-base xl:text-lg text-gray-700 font-medium break-all sm:break-normal">ava@greenlinkst.com</a>
-                        </div>
-                    </div>
-
-                    <!-- Columna 2: Correos -->
-                    <div class="flex flex-col px-2 md:px-6 xl:px-8 lg:border-r-2 border-brand-navy">
-                        <div
-                            class="grid grid-cols-[auto_1fr] gap-x-3 xl:gap-x-4 gap-y-2 sm:gap-y-3 w-fit mx-auto lg:mx-0 xl:mx-auto">
-
-                            <!-- Correo 1 -->
-                            <div class="flex justify-center items-center mt-1">
-                                <i class="fas fa-envelope text-xl sm:text-2xl text-[#005cb3]"></i>
-                            </div>
-                            <div class="flex items-center mt-1">
-                                <a href="mailto:sales@morg.broker"
-                                    class="text-base sm:text-lg xl:text-xl text-gray-700 font-medium hover:text-brand-blue transition-colors break-all sm:break-normal">sales@morg.broker</a>
-                            </div>
-
-                            <!-- Correo 2 -->
-                            <div class="flex justify-center items-center">
-                                <i class="fas fa-envelope text-xl sm:text-2xl text-[#005cb3]"></i>
-                            </div>
-                            <div class="flex items-center">
-                                <a href="mailto:operaciones@morg.broker"
-                                    class="text-base sm:text-lg xl:text-xl text-gray-700 font-medium hover:text-brand-blue transition-colors break-all sm:break-normal">operaciones@morg.broker</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Columna 3: Dr. Luis -->
-                    <div class="flex flex-col px-2 md:px-6 xl:px-8">
-                        <div class="flex items-center gap-3 xl:gap-4 mb-3">
-                            <i class="fas fa-user text-2xl text-[#005cb3] shrink-0"></i>
-                            <span class="text-lg xl:text-xl font-medium text-gray-700">Dr. Luis Fernando
-                                Cordón</span>
-                        </div>
-                        <div class="flex items-start gap-3 xl:gap-4">
-                            <i class="fas fa-envelope text-xl text-[#005cb3] mt-1 shrink-0"></i>
-                            <a href="mailto:luisfercordon@gmail.com"
-                                class="text-base xl:text-lg text-gray-700 font-medium break-all sm:break-normal">luisfercordon@gmail.com</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Logo en footer -->
             <div class="mt-20 opacity-60 text-center px-4 w-full flex flex-col items-center">
